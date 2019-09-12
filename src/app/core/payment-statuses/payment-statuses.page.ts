@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuController} from '@ionic/angular';
 
 @Component({
   selector: 'app-payment-statuses',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentStatusesPage implements OnInit {
 
-  constructor() { }
+    constructor(
+        private menuCtr: MenuController
+    ) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.closeMenu();
+    }
+
+    public closeMenu() {
+        this.menuCtr.close('first');
+    }
 
 }

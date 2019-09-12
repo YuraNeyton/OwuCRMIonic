@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class DbLoadStatusService {
-    $statusPreloadingData = new Subject<string>();
 
-    constructor() {
-    }
+  $statusPreloadingData = new Subject<string>();
+
+  constructor() {
+  }
 }

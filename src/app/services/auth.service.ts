@@ -1,18 +1,21 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Manager} from '../models/Manager';
 import {ConfigService} from './config.service';
 import {Observable, Subject} from 'rxjs';
+import {Manager} from '../models/manager';
 import {map} from 'rxjs/operators';
+import {Roles} from '../models/roles';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+
     public principal: Manager = null;
-    private authURL = '';
+    public roles = Roles;
     public logoutLoginSubject = new Subject();
     public menuShowIfLogin = new Subject();
+    private authURL = '';
 
     constructor(
         private http: HttpClient,
@@ -61,4 +64,5 @@ export class AuthService {
     public getLocalPrincipal() {
         return this.principal;
     }
+
 }

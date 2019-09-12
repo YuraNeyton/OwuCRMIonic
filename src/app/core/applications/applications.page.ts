@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MenuController} from '@ionic/angular';
 
 @Component({
-  selector: 'app-applications',
-  templateUrl: './applications.page.html',
-  styleUrls: ['./applications.page.scss'],
+    selector: 'app-applications',
+    templateUrl: './applications.page.html',
+    styleUrls: ['./applications.page.scss'],
 })
 export class ApplicationsPage implements OnInit {
 
-  constructor() { }
+    constructor(
+        private menuCtr: MenuController
+    ) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.closeMenu();
+    }
 
+    public closeMenu() {
+        this.menuCtr.close('first');
+    }
 }

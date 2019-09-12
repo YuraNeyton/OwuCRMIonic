@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuController} from '@ionic/angular';
 
 @Component({
   selector: 'app-e-applications',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EApplicationsPage implements OnInit {
 
-  constructor() { }
+    constructor(
+        private menuCtr: MenuController
+    ) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.closeMenu();
+    }
+
+    public closeMenu() {
+        this.menuCtr.close('first');
+    }
 
 }
