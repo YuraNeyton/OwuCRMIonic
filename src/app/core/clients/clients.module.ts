@@ -7,6 +7,8 @@ import {IonicModule} from '@ionic/angular';
 
 import {ClientsPage} from './clients.page';
 import {ClientsTableComponent} from './clients-table/clients-table.component';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {FilterComponent} from './filter/filter.component';
 
 const routes: Routes = [
     {
@@ -20,9 +22,10 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         IonicModule,
-        RouterModule.forChild(routes)
-    ],
-    declarations: [ClientsPage, ClientsTableComponent]
+        NgxDatatableModule,
+        RouterModule.forChild(routes),
+    ], entryComponents: [FilterComponent],
+    declarations: [ClientsPage, ClientsTableComponent, FilterComponent]
 })
 export class ClientsPageModule {
 }

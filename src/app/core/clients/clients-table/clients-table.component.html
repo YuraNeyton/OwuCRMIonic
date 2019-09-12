@@ -1,54 +1,34 @@
-<ion-grid *ngIf="clients">
-    <ion-row>
+<!--<ngx-datatable class="dark"-->
+<!--[rows]="clients"-->
+<!--[ngClass]="tablestyle"-->
+<!--[columnMode]="'force'"-->
+<!--[sortType]="'multi'">-->
+<!--<ngx-datatable-column class="sort-asc" (click)="test($event)" name="Name"></ngx-datatable-column>-->
+<!--<ngx-datatable-column name="Surname"></ngx-datatable-column>-->
+<!--<ngx-datatable-column name="Phone"></ngx-datatable-column>-->
+<!--</ngx-datatable>-->
+
+<ion-grid>
+    <ion-row class="table-header" #headerBlock>
         <ion-col>
-            Ім'я
+            <div class="table-header-text" (click)="getHeader('name',headerBlock,$event)">Ім'я</div>
         </ion-col>
         <ion-col>
-            Прізвище
+            <div class="table-header-text" (click)="getHeader('surname',headerBlock,$event)">Прізвище</div>
         </ion-col>
         <ion-col>
-            Телефон
-        </ion-col>
-        <ion-col>
-            Емейл
-        </ion-col>
-        <ion-col>
-            Вік
-        </ion-col>
-        <ion-col>
-            Статус
+            <div class="table-header-text" (click)="getHeader('phone',headerBlock,$event)">Телефон</div>
         </ion-col>
     </ion-row>
     <ion-row *ngFor="let c of clients">
         <ion-col>
-            <div>
-                {{c.name}}
-            </div>
+            <div>{{c.name}}</div>
         </ion-col>
         <ion-col>
-            <div>
-                {{c.surname}}
-            </div>
+            <div>{{c.surname}}</div>
         </ion-col>
         <ion-col>
-            <div>
-                {{c.phone}}
-            </div>
-        </ion-col>
-        <ion-col>
-            <div>
-                {{c.email}}
-            </div>
-        </ion-col>
-        <ion-col>
-            <div>
-                {{c.age}}
-            </div>
-        </ion-col>
-        <ion-col>
-            <div>
-                {{c.statusId}}
-            </div>
+            <div>{{c.phone}}</div>
         </ion-col>
     </ion-row>
 </ion-grid>

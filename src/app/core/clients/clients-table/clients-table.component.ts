@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ClientService} from '../../../services/client.service';
+import {Component, Input, OnInit} from '@angular/core';
 import {Client} from '../../../models/client';
+import {MaterialTableService} from '../../../services/material-table.service';
+import {ClientService} from '../../../services/client.service';
 
 @Component({
     selector: 'app-clients-table',
@@ -8,7 +9,7 @@ import {Client} from '../../../models/client';
     styleUrls: ['./clients-table.component.scss'],
 })
 export class ClientsTableComponent implements OnInit {
-    clients: Client[];
+    @Input() clients: Client[];
 
     constructor(
         private clientService: ClientService
@@ -16,14 +17,10 @@ export class ClientsTableComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadClients();
     }
 
-    public loadClients() {
-        this.clientService.getClients().subscribe(value => {
-            console.log(value);
-            this.clients = value.models;
-        });
+    getHeader(key: string, headerBlock: HTMLElement, event: any) {
+        this.clientService.$getHeader.next({name: key, element: headerBlock, e: event});
     }
 
 }

@@ -24,8 +24,29 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
 .title {
   text-align: center;
   font-weight: bold;
+}
+.sort-asc:after {
+   content: '';
+   width: 15px;
+   height: 15px;
+   position: absolute;
+   background-size: contain;
+   margin: 0 5px;
+   background-image: url('assets/images/asc.png');
+ }
+
+.sort-desc:after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  background-size: contain;
+  margin: 0 5px;
+  background-image: url('assets/images/desc.png');
 }

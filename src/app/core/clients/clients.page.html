@@ -3,10 +3,30 @@
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="presentModal()">
+                <ion-icon name="list" size="medium"></ion-icon>
+            </ion-button>
+        </ion-buttons>
         <ion-title class="title">Клієнти</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <app-clients-table></app-clients-table>
+    <app-clients-table [clients]="clients"></app-clients-table>
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="loadPaginated(-1, null)">
+                <ion-icon name="arrow-dropleft-circle" size="large"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="loadPaginated(1, null)">
+                <ion-icon name="arrow-dropright-circle" size="large"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="title">{{pageIndex}} з {{countOfPages}}</ion-title>
+    </ion-toolbar>
+</ion-footer>
