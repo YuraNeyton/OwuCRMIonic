@@ -1,0 +1,33 @@
+<div>
+  <ion-list>
+    <ng-container *ngFor="let p of pages">
+      <div class="d-flex border-bottom">
+        <div class="title" routerLinkActive="active-cat-item" [routerLink]="p.url">
+          <span>{{ p.title }}</span>
+        </div>
+        <div class="with-icons" (click)="p.open = !p.open" [class.parent-active]="p.open">
+          <ion-icon class="i-open" size="small" slot="start" name="arrow-down" *ngIf="!p.open && p.children?.length>0"></ion-icon>
+          <ion-icon class="i-open" size="small" slot="start" name="arrow-up" *ngIf="p.open && p.children?.length>0"></ion-icon>
+        </div>
+
+
+      </div>
+
+      <ion-list *ngIf="p.open">
+        <div>
+          <div
+                  expand="full"
+                  *ngFor="let sub of p.children"
+                  class="sub-item"
+                  [routerLink]="sub.url"
+                  routerDirection="root"
+                  routerLinkActive="active-cat-item"
+          >
+            {{ sub.title }}
+          </div>
+        </div>
+      </ion-list>
+    </ng-container>
+
+  </ion-list>
+</div>

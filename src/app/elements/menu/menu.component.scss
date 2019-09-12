@@ -1,0 +1,99 @@
+.active {
+  --ion-text-color: var(--ion-color-primary);
+
+  ion-icon {
+    --ion-text-color-rgb: var(--ion-color-primary);
+  }
+}
+
+.parent-active {
+  font-weight: 500;
+}
+
+.sub-item {
+  padding: 15px;
+  font-size: medium;
+  background: #f4f5f8;
+}
+
+.title {
+  width: 90%;
+  padding: 15px;
+  text-align: right;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+
+}
+
+.home_icon {
+  background-color: #c20031;
+  background-position: center 13px;
+  background-repeat: no-repeat !important;
+  margin-left: 10px;
+  max-width: 100%;
+}
+
+ion-list.md.list-md.hydrated {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #c3c3c3;
+}
+
+ion-label.title.sc-ion-label-md-h.sc-ion-label-md-s.md.hydrated {
+  height: 100%;
+  padding-top: 15px;
+}
+
+.red_line {
+  background-color: #c20031
+}
+
+.grey {
+  background-color: #f2f2f2;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.i-open {
+  padding: 15px;
+}
+
+.with-icons {
+  background: #f4f5f8;
+}
+
+.icon-add-form-red {
+  background: white;
+  color: #c20031;
+  border-radius: 50%;
+  height: 18px;
+}
+.icon-add-form-white {
+  color: white;
+}
+.active-cat-item div div ion-icon {
+  color: white;
+}
+.developers-studio {
+  width: 100%;
+  height: auto;
+  background: #1e2023;
+  padding: 10px 80px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #f4f5f8
+}
+.list-ios {
+  margin-bottom: 0;
+}
