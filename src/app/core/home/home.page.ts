@@ -15,6 +15,12 @@ import {Eapplication} from '../../models/eapplication';
 export class HomePage implements OnInit {
     applications: Application[];
     eapplications: Eapplication[];
+    applicationPage = true;
+    eapplicationPage = false;
+    sort = '';
+    pageIndex = 1;
+    pageSize = 50;
+    countOfPages = 1;
 
     constructor(
         private authService: AuthService,
@@ -27,6 +33,17 @@ export class HomePage implements OnInit {
 
     ngOnInit() {
         this.closeMenu();
+        if (this.applicationPage) {
+            this.applicationService.getApplications({
+                q: {},
+                sort: this.sort ? this.sort : 'createdAt DESC',
+                limit: this.pageSize,
+                offset: (this.pageIndex * this.pageSize) - this.pageSize,
+                include: ['client', 'course', 'group', 'city']
+            }).subscribe((value: any) => {
+                this.applications = value.models;
+            });
+        }
     }
 
     logout() {
@@ -41,16 +58,23 @@ export class HomePage implements OnInit {
     }
 
     segmentChanged(e) {
-        console.log(e.detail.value);
         if (e.detail.value === 'application') {
-            this.applicationService.getApplications().subscribe(value => {
-                this.applications = value;
-                console.log(value);
+            this.applicationService.getApplications({
+                q: {},
+                sort: this.sort ? this.sort : 'createdAt DESC',
+                limit: this.pageSize,
+                offset: (this.pageIndex * this.pageSize) - this.pageSize,
+                include: ['client', 'course', 'group', 'city']
+            }).subscribe((value: any) => {
+                this.applications = value.models;
+                this.applicationPage = !this.applicationPage;
+                this.eapplicationPage = false;
             });
         } else if (e.detail.value === 'e-application') {
-            this.eapplicationService.getEapplications().subscribe(value => {
-                this.eapplications = value;
-                console.log(value);
+            this.eapplicationService.getEapplications().subscribe((value: any) => {
+                this.eapplications = value.models;
+                this.applicationPage = false;
+                this.eapplicationPage = !this.eapplicationPage;
             });
         }
     }

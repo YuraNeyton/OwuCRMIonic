@@ -21,6 +21,6 @@
             <ion-label>Ел. Заявки</ion-label>
         </ion-segment-button>
     </ion-segment>
-    <app-application-list></app-application-list>
-    <app-e-application-list></app-e-application-list>
+    <app-application-list [applications]="applications" *ngIf="applicationPage"></app-application-list>
+    <app-e-application-list [eapplications]="eapplications" *ngIf="eapplicationPage"></app-e-application-list>
 </ion-content>
