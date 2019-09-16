@@ -14,6 +14,8 @@ export class ClientService {
 
     private clientsURL = '';
     public $getHeader = new Subject();
+    public $Filtered = new Subject();
+    public $UpdateFilter = new Subject();
 
     constructor(
         private http: HttpClient,

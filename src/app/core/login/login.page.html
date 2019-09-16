@@ -1,33 +1,45 @@
-<ion-header>
-    <ion-toolbar color="dark">
-        <ion-title class="title" color="primary">OWU CRM</ion-title>
-    </ion-toolbar>
-</ion-header>
+<!--<ion-header>-->
+<!--<ion-toolbar class="test">-->
+<!--<div class="logo-block">-->
+<!--<ion-img class="logo" src="assets/images/owu-logo.png"></ion-img>-->
+<!--</div>-->
+<!--</ion-toolbar>-->
+<!--</ion-header>-->
 
 <ion-content>
-    <ion-grid>
-        <ion-row justify-content-center>
-            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                <div text-center>
-                    <h4>Login</h4>
-                </div>
-                <div padding>
-                    <ion-item>
-                        <ion-input [(ngModel)]="credentials.login" type="text" placeholder="login"
-                                   name="username"></ion-input>
-                    </ion-item>
+    <!--<ion-grid>-->
+    <!--<ion-row justify-content-center>-->
+    <!--<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">-->
+    <!--<div text-center>-->
+    <!--<h4>Login</h4>-->
+    <!--</div>-->
+    <!--<div padding>-->
+    <!--<ion-item>-->
+    <!--<ion-input [(ngModel)]="credentials.login" type="text" placeholder="login"-->
+    <!--name="username"></ion-input>-->
+    <!--</ion-item>-->
 
-                    <ion-item>
-                        <ion-input [(ngModel)]="credentials.password" type="password" placeholder="password"
-                                   name="password"></ion-input>
-                    </ion-item>
-                </div>
+    <!--<ion-item>-->
+    <!--<ion-input [(ngModel)]="credentials.password" type="password" placeholder="password"-->
+    <!--name="password"></ion-input>-->
+    <!--</ion-item>-->
+    <!--</div>-->
 
-                <div padding>
-                    <ion-button size="large" expand="block" (click)="login()">Login</ion-button>
-                </div>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <!--<div padding>-->
+    <!--<ion-button size="large" expand="block" (click)="login()">Login</ion-button>-->
+    <!--</div>-->
+    <!--</ion-col>-->
+    <!--</ion-row>-->
+    <!--</ion-grid>-->
+
+
+    <form class="box" ngForm>
+        <ion-img class="logo" src="assets/images/owu-logo.png"></ion-img>
+        <input #loginInput [(ngModel)]="credentials.login" type="text" name="login" placeholder="Username"
+               (change)="styleChange(loginInput)">
+        <input #passInput [(ngModel)]="credentials.password" type="password" name="password" placeholder="Password"
+               (change)="styleChange(passInput)">
+        <input type="submit" name="" value="Login" (click)="login()">
+    </form>
 </ion-content>
 

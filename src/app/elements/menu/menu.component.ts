@@ -12,14 +12,15 @@ export class MenuComponent implements OnInit {
             open: false,
             title: 'Головна',
             url: '/home',
-            children: [
-            ]
+            icon: 'home',
+            children: []
         },
         {
             id: 1,
             open: false,
             title: 'Клієнти',
             url: '/clients',
+            icon: 'person',
             children: [
                 {id: 1, title: 'Завдання', url: '/tasks'},
                 {id: 2, title: 'Карта', url: '/clients-map'}
@@ -30,6 +31,7 @@ export class MenuComponent implements OnInit {
             open: false,
             title: 'Заявки',
             url: '/applications',
+            icon: 'clipboard',
             children: [
                 {id: 1, title: 'Ел. Заявки', url: '/e-applications'},
                 {id: 2, title: 'Платежі', url: '/payments'},
@@ -41,22 +43,23 @@ export class MenuComponent implements OnInit {
             open: false,
             title: 'Групи',
             url: '/groups',
-            children: [
-            ]
+            icon: 'people',
+            children: []
         },
         {
             id: 4,
             open: false,
             title: 'Курси',
             url: '/courses',
-            children: [
-            ]
+            icon: 'school',
+            children: []
         },
         {
             id: 5,
             open: false,
             title: 'Інше',
             url: '/sources',
+            icon: 'apps',
             children: [
                 {id: 1, title: 'Джерела', url: '/sources'},
                 {id: 2, title: 'Міста', url: '/cities'},
@@ -71,6 +74,7 @@ export class MenuComponent implements OnInit {
             open: false,
             title: 'Конкуренти',
             url: '/competitors',
+            icon: 'man',
             children: [
                 {id: 1, title: 'Заявки', url: '/competitor-applications'},
             ]
@@ -80,8 +84,8 @@ export class MenuComponent implements OnInit {
             open: false,
             title: 'Рейтинги',
             url: '/ratings',
-            children: [
-            ]
+            icon: 'podium',
+            children: []
         },
     ];
 

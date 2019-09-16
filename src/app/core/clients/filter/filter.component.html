@@ -5,21 +5,25 @@
         <ion-icon name="close" size="medium"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="title">Фільтер</ion-title>
+    <ion-title class="title">Фільтр</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
+  <ion-list #filterBlock>
     <ion-item>
-      <ion-label>Відсортувати</ion-label>
-      <ion-select [(ngModel)]="sort" okText="Сортувати" cancelText="Скасувати">
-        <ion-select-option value="name">Ім'я: За зростанням</ion-select-option>
-        <ion-select-option value="name">Ім'я: За спаданням</ion-select-option>
-        <ion-select-option value="surname">Прізвище: За зростанням</ion-select-option>
-        <ion-select-option value="surname">Прізвище: За спаданням</ion-select-option>
-        <ion-select-option value="age">Вік: За зростанням</ion-select-option>
-        <ion-select-option value="age">Вік: За спаданням</ion-select-option>
-      </ion-select>
+      <ion-label position="stacked"> Ім'я <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required type="text" data-key="name" [(ngModel)]="filterParams.name" (keyup)="loadFiltered(filterBlock)"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="stacked"> Прізвище <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required  type="text" data-key="surname" [(ngModel)]="filterParams.surname" (keyup)="loadFiltered(filterBlock)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"> Телефон <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required  type="text" data-key="phone" [(ngModel)]="filterParams.phone" (keyup)="loadFiltered(filterBlock)"></ion-input>
+    </ion-item>
+    <div padding>
+      <ion-button size="large" expand="block" (click)="filter()">Фільтрувати</ion-button>
+    </div>
   </ion-list>
 </ion-content>

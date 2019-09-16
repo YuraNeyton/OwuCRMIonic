@@ -35,13 +35,15 @@ export class ClientsPage implements OnInit {
         this.clientsService.$getHeader.subscribe((value: any) => {
             this.loadSorted(value.name, value.element.el, value.e);
         });
+        this.loadFiltered();
     }
 
     async presentModal() {
         const modal = await this.modalController.create({
             component: FilterComponent,
         });
-
+        this.filter = {};
+        this.loadClients();
         return await modal.present();
     }
 
@@ -51,6 +53,7 @@ export class ClientsPage implements OnInit {
 
     private sendLoadClients(): Observable<any> {
         const filterToSend = this.getFilterToSend();
+        console.log(filterToSend);
         return this.clientsService.getClients({
             q: filterToSend,
             sort: this.sort ? this.sort : 'createdAt DESC',
@@ -113,5 +116,14 @@ export class ClientsPage implements OnInit {
     loadSorted(key: string, headerBlock: HTMLElement, event: any) {
         this.sort = this.materialTableService.sort(key, headerBlock, event);
         this.loadClients();
+    }
+
+    loadFiltered() {
+        this.clientsService.$Filtered.subscribe((value: any) => {
+            // this.filter = this.materialTableService.getFilter(value.el);
+            // console.log(this.filter);
+            this.filter = value;
+            this.loadClients();
+        });
     }
 }

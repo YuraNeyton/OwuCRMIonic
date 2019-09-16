@@ -78,7 +78,7 @@ export class MaterialTableService {
 
     getFilter(filterBlock: HTMLElement): any {
         const query = {};
-        const inputs = filterBlock.getElementsByTagName('input');
+        const inputs = filterBlock.getElementsByTagName('ion-input');
         for (let i = 0; i < inputs.length; i++) {
             const input = inputs[i];
             if (input.value) {

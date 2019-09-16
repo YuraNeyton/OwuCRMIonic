@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
+import {ClientService} from '../../../services/client.service';
 
 @Component({
     selector: 'app-filter',
@@ -8,9 +9,11 @@ import {ModalController} from '@ionic/angular';
 })
 export class FilterComponent implements OnInit {
     sort = '';
+    filterParams = {name: '', surname: '', phone: ''};
 
     constructor(
-        public modalController: ModalController
+        private modalController: ModalController,
+        private clientService: ClientService
     ) {
     }
 
@@ -22,5 +25,14 @@ export class FilterComponent implements OnInit {
             // 'dismissed': true
             data: this.sort
         });
+    }
+
+    filter() {
+        this.clientService.$Filtered.next(this.filterParams);
+        this.close();
+    }
+
+    loadFiltered(headerBlock: HTMLElement) {
+        // this.clientService.$Filtered.next(headerBlock);
     }
 }

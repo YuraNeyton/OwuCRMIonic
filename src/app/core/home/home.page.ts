@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {MenuController} from '@ionic/angular';
+import {ApplicationService} from '../../services/application.service';
+import {Application} from '../../models/application';
+import {EapplicationService} from '../../services/eapplication.service';
+import {Eapplication} from '../../models/eapplication';
 
 @Component({
     selector: 'app-home',
@@ -9,11 +13,15 @@ import {MenuController} from '@ionic/angular';
     styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+    applications: Application[];
+    eapplications: Eapplication[];
 
     constructor(
         private authService: AuthService,
         private router: Router,
-        private menuCtr: MenuController
+        private menuCtr: MenuController,
+        private applicationService: ApplicationService,
+        private eapplicationService: EapplicationService
     ) {
     }
 
@@ -30,5 +38,20 @@ export class HomePage implements OnInit {
 
     public closeMenu() {
         this.menuCtr.close('first');
+    }
+
+    segmentChanged(e) {
+        console.log(e.detail.value);
+        if (e.detail.value === 'application') {
+            this.applicationService.getApplications().subscribe(value => {
+                this.applications = value;
+                console.log(value);
+            });
+        } else if (e.detail.value === 'e-application') {
+            this.eapplicationService.getEapplications().subscribe(value => {
+                this.eapplications = value;
+                console.log(value);
+            });
+        }
     }
 }

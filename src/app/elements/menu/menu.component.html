@@ -1,33 +1,39 @@
-<div>
-  <ion-list>
+<!--<div *ngFor="let p of pages">-->
+<!--<ion-menu-toggle *ngIf="p.url">-->
+<!--<ion-item [routerLink]="p.url" routerDirection="root" routerLinkActive="active">-->
+<!--<ion-icon name="home" slot="start"></ion-icon>-->
+<!--<ion-label>{{p.title}}</ion-label>-->
+<!--</ion-item>-->
+<!--<div button *ngIf="p.children?.length > 0" (click)="p.open = !p.open"-->
+<!--[class.active-parent]="p.open" detail="false">-->
+<!--<ion-icon slot="start" name="arrow-forward" *ngIf="!p.open"></ion-icon>-->
+<!--<ion-icon slot="start" name="arrow-down" *ngIf="p.open"></ion-icon>-->
+<!--&lt;!&ndash;<ion-label>{{p.title}}</ion-label>&ndash;&gt;-->
+<!--</div>-->
+
+<!--</ion-menu-toggle>-->
+
+
+<!--</div>-->
+<ion-list style="padding: 0">
     <ng-container *ngFor="let p of pages">
-      <div class="d-flex border-bottom">
-        <div class="title" routerLinkActive="active-cat-item" [routerLink]="p.url">
-          <span>{{ p.title }}</span>
-        </div>
-        <div class="with-icons" (click)="p.open = !p.open" [class.parent-active]="p.open">
-          <ion-icon class="i-open" size="small" slot="start" name="arrow-down" *ngIf="!p.open && p.children?.length>0"></ion-icon>
-          <ion-icon class="i-open" size="small" slot="start" name="arrow-up" *ngIf="p.open && p.children?.length>0"></ion-icon>
-        </div>
-
-
-      </div>
-
-      <ion-list *ngIf="p.open">
-        <div>
-          <div
-                  expand="full"
-                  *ngFor="let sub of p.children"
-                  class="sub-item"
-                  [routerLink]="sub.url"
-                  routerDirection="root"
-                  routerLinkActive="active-cat-item"
-          >
-            {{ sub.title }}
-          </div>
-        </div>
-      </ion-list>
+        <ion-item class="content-background">
+            <ion-icon [name]="p.icon" class="icon-color" slot="start" [routerLink]="p.url"></ion-icon>
+            <ion-label class="text" [routerLink]="p.url">{{p.title}}</ion-label>
+            <div class="with-icons" (click)="p.open = !p.open" [class.parent-active]="p.open">
+                <ion-icon class="icon-color" size="medium" slot="start"
+                          name="arrow-down" *ngIf="!p.open && p.children?.length>0"></ion-icon>
+                <ion-icon class="icon-color" size="medium" slot="start"
+                          name="arrow-up" *ngIf="p.open && p.children?.length>0"></ion-icon>
+            </div>
+        </ion-item>
+        <ion-list *ngIf="p.open" style="padding: 0">
+            <ion-item *ngFor="let sub of p.children" [routerLink]="sub.url"
+                    routerDirection="root"
+                    routerLinkActive="active-cat-item"
+                    class="content-background">
+                <ion-label class="text">{{sub.title}}</ion-label>
+            </ion-item>
+        </ion-list>
     </ng-container>
-
-  </ion-list>
-</div>
+</ion-list>
