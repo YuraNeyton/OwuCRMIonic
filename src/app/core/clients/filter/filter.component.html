@@ -1,29 +1,29 @@
 <ion-header>
-  <ion-toolbar class="toolbar-color">
-    <ion-buttons slot="end">
-      <ion-button (click)="close()">
-        <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title class="title">Пошук</ion-title>
-  </ion-toolbar>
+    <ion-toolbar class="toolbar-color">
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">
+                <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="title">Пошук</ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-content class="content-background">
-  <ion-list #filterBlock style="background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);">
-    <ion-item style="--background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);">
-      <ion-label position="stacked"> Ім'я <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text" data-key="name" [(ngModel)]="filterParams.name" (keyup)="loadFiltered(filterBlock)"></ion-input>
-    </ion-item>
-    <ion-item style="--background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);">
-      <ion-label position="stacked"> Прізвище <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required  type="text" data-key="surname" [(ngModel)]="filterParams.surname" (keyup)="loadFiltered(filterBlock)"></ion-input>
-    </ion-item>
-    <ion-item style="--background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);">
-      <ion-label position="stacked"> Телефон <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required  type="text" data-key="phone" [(ngModel)]="filterParams.phone" (keyup)="loadFiltered(filterBlock)"></ion-input>
-    </ion-item>
-    <div padding>
-      <ion-button size="large" expand="block" (click)="filter()" color="danger">Фільтрувати</ion-button>
-    </div>
-  </ion-list>
+    <ion-card>
+        <ion-list>
+            <ion-item>
+                <ion-label>Ім'я:</ion-label>
+                <ion-input required type="text" [(ngModel)]="filterParams.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Прізвище:</ion-label>
+                <ion-input required type="text" [(ngModel)]="filterParams.surname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Телефон:</ion-label>
+                <ion-input required type="number" [(ngModel)]="filterParams.phone"></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="block" color="success" (click)="filter()">Знайти</ion-button>
+    </ion-card>
 </ion-content>

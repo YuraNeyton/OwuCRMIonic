@@ -11,6 +11,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptorService} from './services/interceptors/auth-interceptor.service';
 import {ElementModule} from './elements/element.module';
+import {
+    GoogleMaps,
+    GoogleMap,
+} from '@ionic-native/google-maps';
 
 @NgModule({
     declarations: [AppComponent],
@@ -19,6 +23,8 @@ import {ElementModule} from './elements/element.module';
     providers: [
         StatusBar,
         SplashScreen,
+        // GoogleMap,
+        GoogleMaps,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {
             provide: HTTP_INTERCEPTORS,

@@ -10,6 +10,7 @@ import {ClientsTableComponent} from './clients-table/clients-table.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {FilterComponent} from './filter/filter.component';
 import {SingleClientComponent} from './single-client/single-client.component';
+import {PipeModule} from '../../pipes/pipe.module';
 
 const routes: Routes = [
     {
@@ -23,6 +24,7 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         IonicModule,
+        PipeModule,
         NgxDatatableModule,
         RouterModule.forChild(routes),
     ], entryComponents: [FilterComponent, SingleClientComponent],

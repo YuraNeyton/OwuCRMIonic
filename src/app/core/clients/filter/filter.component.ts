@@ -31,8 +31,4 @@ export class FilterComponent implements OnInit {
         this.clientService.$Filtered.next(this.filterParams);
         this.close();
     }
-
-    loadFiltered(headerBlock: HTMLElement) {
-        // this.clientService.$Filtered.next(headerBlock);
-    }
 }
