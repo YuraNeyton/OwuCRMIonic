@@ -1,0 +1,29 @@
+.filter-bar{
+  display: flex;
+  padding: 5px 5px 0 5px;
+  flex-wrap: wrap;
+
+}
+.filter-label{
+
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  align-content: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 5px;
+  color: #f4f4f4;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px 0px black;
+  padding: 0;
+  background: black;
+  margin: 5px;
+  padding-left: 2px;
+
+}
+.filter-icon{
+  padding: 2px 0 0 2px;
+}

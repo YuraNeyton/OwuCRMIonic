@@ -9,6 +9,7 @@ import {ClientsPage} from './clients.page';
 import {ClientsTableComponent} from './clients-table/clients-table.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {FilterComponent} from './filter/filter.component';
+import {SingleClientComponent} from './single-client/single-client.component';
 
 const routes: Routes = [
     {
@@ -24,8 +25,8 @@ const routes: Routes = [
         IonicModule,
         NgxDatatableModule,
         RouterModule.forChild(routes),
-    ], entryComponents: [FilterComponent],
-    declarations: [ClientsPage, ClientsTableComponent, FilterComponent]
+    ], entryComponents: [FilterComponent, SingleClientComponent],
+    declarations: [ClientsPage, ClientsTableComponent, FilterComponent, SingleClientComponent]
 })
 export class ClientsPageModule {
 }

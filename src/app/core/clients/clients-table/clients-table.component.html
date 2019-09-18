@@ -1,34 +1,26 @@
-<!--<ngx-datatable class="dark"-->
-<!--[rows]="clients"-->
-<!--[ngClass]="tablestyle"-->
-<!--[columnMode]="'force'"-->
-<!--[sortType]="'multi'">-->
-<!--<ngx-datatable-column class="sort-asc" (click)="test($event)" name="Name"></ngx-datatable-column>-->
-<!--<ngx-datatable-column name="Surname"></ngx-datatable-column>-->
-<!--<ngx-datatable-column name="Phone"></ngx-datatable-column>-->
-<!--</ngx-datatable>-->
-
-<ion-grid>
-    <ion-row class="table-header" #headerBlock>
-        <ion-col>
-            <div class="table-header-text" (click)="getHeader('name',headerBlock,$event)">Ім'я</div>
-        </ion-col>
-        <ion-col>
-            <div class="table-header-text" (click)="getHeader('surname',headerBlock,$event)">Прізвище</div>
-        </ion-col>
-        <ion-col>
-            <div class="table-header-text" (click)="getHeader('phone',headerBlock,$event)">Телефон</div>
-        </ion-col>
-    </ion-row>
-    <ion-row *ngFor="let c of clients">
-        <ion-col>
-            <div>{{c.name}}</div>
-        </ion-col>
-        <ion-col>
-            <div>{{c.surname}}</div>
-        </ion-col>
-        <ion-col>
-            <div>{{c.phone}}</div>
-        </ion-col>
-    </ion-row>
-</ion-grid>
+<ion-card style="border: 2px solid #e6ebeb">
+    <ion-grid>
+        <ion-row class="table-header" #headerBlock>
+            <ion-col>
+                <div class="table-header-text" (click)="getHeader('name',headerBlock,$event)">Ім'я</div>
+            </ion-col>
+            <ion-col>
+                <div class="table-header-text" (click)="getHeader('surname',headerBlock,$event)">Прізвище</div>
+            </ion-col>
+            <ion-col>
+                <div class="table-header-text" (click)="getHeader('phone',headerBlock,$event)">Телефон</div>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let c of clients" (click)="presentModal(c)">
+            <ion-col class="content-text-white">
+                <div>{{c.name}}</div>
+            </ion-col>
+            <ion-col class="content-text-white">
+                <div>{{c.surname}}</div>
+            </ion-col>
+            <ion-col class="content-text-white">
+                <div>{{c.phone}}</div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-card>

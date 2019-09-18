@@ -1,5 +1,7 @@
 {
   "name": "OwuCRMIonic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -8,16 +8,13 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
-
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
-
 /* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
-
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
@@ -27,19 +24,24 @@
 @import '~@swimlane/ngx-datatable/index.css';
 @import '~@swimlane/ngx-datatable/themes/material.scss';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 .title {
   text-align: center;
   font-weight: bold;
+  color: white;
+  font-family: 'Roboto', sans-serif;
 }
+
 .sort-asc:after {
-   content: '';
-   width: 15px;
-   height: 15px;
-   position: absolute;
-   background-size: contain;
-   margin: 0 5px;
-   background-image: url('assets/images/asc.png');
- }
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  background-size: contain;
+  margin: 0 5px;
+  background-image: url('assets/images/asc.png');
+}
 
 .sort-desc:after {
   content: '';
@@ -51,12 +53,14 @@
   background-image: url('assets/images/desc.png');
 }
 
-.content-background{
-  --background: linear-gradient(135deg, rgba(129,131,131,1) 0%, rgba(42,44,44,1) 100%);
+.content-background {
+  --background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);
 }
-.icon-color{
+
+.icon-color {
   color: white;
 }
-.toolbar-color{
-  --background: linear-gradient(135deg, rgba(129,131,131,1) 0%, rgba(42,44,44,1) 100%);
+
+.toolbar-color {
+  --background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);
 }

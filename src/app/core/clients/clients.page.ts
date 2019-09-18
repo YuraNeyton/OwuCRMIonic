@@ -30,6 +30,7 @@ export class ClientsPage implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.filter);
         this.closeMenu();
         this.loadClients();
         this.clientsService.$getHeader.subscribe((value: any) => {
@@ -42,7 +43,6 @@ export class ClientsPage implements OnInit {
         const modal = await this.modalController.create({
             component: FilterComponent,
         });
-        this.filter = {};
         this.loadClients();
         return await modal.present();
     }
@@ -125,5 +125,18 @@ export class ClientsPage implements OnInit {
             this.filter = value;
             this.loadClients();
         });
+    }
+
+    filterLabel(field) {
+        if (field === 'name') {
+            this.filter.name = '';
+            this.loadClients();
+        } else if (field === 'surname') {
+            this.filter.surname = '';
+            this.loadClients();
+        } else {
+            this.filter.phone = '';
+            this.loadClients();
+        }
     }
 }

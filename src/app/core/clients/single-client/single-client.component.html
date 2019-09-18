@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar class="toolbar-color">
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">
+                <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="title" *ngIf="c">{{c.name}} {{c.surname}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+    <ion-card *ngIf="c">
+        <ion-list>
+            <ion-item *ngIf="c.name">
+                <ion-label>Ім'я:</ion-label>
+                {{c.name}}
+            </ion-item>
+            <ion-item *ngIf="c.surname">
+                <ion-label>Прізвище:</ion-label>
+                {{c.surname}}
+            </ion-item>
+            <ion-list *ngIf="c.address">
+                <ion-item>
+                    <ion-label>Адреса:</ion-label>
+                    {{c.address.address}}
+                </ion-item>
+            </ion-list>
+        </ion-list>
+    </ion-card>
+</ion-content>

@@ -1,11 +1,11 @@
 <ion-header>
     <ion-toolbar class="toolbar-color">
         <ion-buttons slot="start">
-            <ion-back-button class="icon-color"></ion-back-button>
+            <ion-back-button class="icon-color" style="color: white"></ion-back-button>
         </ion-buttons>
         <ion-buttons slot="end">
             <ion-button (click)="presentModal()">
-                <ion-icon name="list" size="medium" class="icon-color"></ion-icon>
+                <ion-icon name="search" class="icon-color"></ion-icon>>
             </ion-button>
         </ion-buttons>
                 <ion-title class="title">
@@ -15,6 +15,20 @@
 </ion-header>
 
 <ion-content class="content-background">
+    <div class="filter-bar" *ngIf="filter">
+        <div *ngIf="filter.name" class="filter-label" (click)="filterLabel('name')">
+            Ім'я: {{filter.name}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+        <div *ngIf="filter.surname" class="filter-label" (click)="filterLabel('surname')">
+            Прізвище: {{filter.surname}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+        <div *ngIf="filter.phone" class="filter-label" (click)="filterLabel('phone')">
+            Телефон: {{filter.phone}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+    </div>
     <app-clients-table [clients]="clients"></app-clients-table>
 </ion-content>
 <ion-footer>
