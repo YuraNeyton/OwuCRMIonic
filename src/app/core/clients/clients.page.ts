@@ -15,7 +15,7 @@ export class ClientsPage implements OnInit {
     clients: Client[];
     count = 0;
     pageIndex = 1;
-    pageSize = 17;
+    pageSize = 10;
     countOfPages = 1;
     sort = '';
     filter: any = {};
@@ -30,13 +30,13 @@ export class ClientsPage implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.filter);
         this.closeMenu();
         this.loadClients();
         this.clientsService.$getHeader.subscribe((value: any) => {
-            this.loadSorted(value.name, value.element.el, value.e);
+            this.loadSorted(value.name, value.element, value.e);
         });
         this.loadFiltered();
+        console.log(this.clients);
     }
 
     async presentModal() {

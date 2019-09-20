@@ -31,6 +31,7 @@ export class AuthService {
                     p.role = p.role[0];
                 }
                 this.principal = p;
+                localStorage.setItem('cities', JSON.stringify(p.cities));
                 const principalForLocalStorage = {
                     role: p.role,
                 };

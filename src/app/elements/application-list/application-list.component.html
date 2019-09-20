@@ -1,47 +1,6 @@
 <ng-container *ngFor="let a of applications">
     <ion-card *ngIf="applications" class="bottom-border">
-        <div class="card-title">{{a.client.name}}</div>
-        <!--<div class="card-content">-->
-            <!--<div *ngIf="a.city" class="card-column">-->
-                <!--<div class="card-type-info">Місто:</div>-->
-                <!--<div class="card-info">-->
-                    <!--{{a.city.name}}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div *ngIf="a.course" class="card-column">-->
-                <!--<div class="card-type-info">Курс:</div>-->
-                <!--<div class="card-info">-->
-                    <!--{{a.course.name}}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div *ngIf="a.group" class="card-column">-->
-                <!--<div class="card-type-info">Група:</div>-->
-                <!--<div class="card-info">-->
-                    <!--{{a.group.name}}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div *ngIf="a.date" class="card-column">-->
-                <!--<div class="card-type-info">Дата:</div>-->
-                <!--<div class="card-info">-->
-                    <!--{{a.date | date}}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div *ngIf="a.fullPrice" class="card-column">-->
-                <!--<div class="card-type-info">Ціна:</div>-->
-                <!--<div class="card-info">-->
-                    <!--{{a.fullPrice}}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div *ngIf="a.leftToPay" class="card-column">-->
-                <!--<div class="card-type-info">До оплати:</div>-->
-                <!--<div class="card-info">-->
-                    <!--{{a.leftToPay}}-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-
+        <div class="card-title">{{a.client.name}} {{a.client.surname}}</div>
         <ion-list>
             <ion-item *ngIf="a.city">
                 <ion-label>Місто:</ion-label>

@@ -13,6 +13,11 @@
 </ion-header>
 
 <ion-content class="content-background">
+    <ion-fab *ngIf="applicationPage" horizontal="start" vertical="bottom" slot="fixed" (click)="presentModal()">
+        <ion-fab-button style="--background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);">
+            <ion-icon name="search"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
     <ion-segment (ionChange)="segmentChanged($event)" value="application">
         <ion-segment-button value="application">
             <ion-label>Заявки</ion-label>
@@ -21,6 +26,32 @@
             <ion-label>Ел. Заявки</ion-label>
         </ion-segment-button>
     </ion-segment>
+    <div class="filter-bar" *ngIf="filter">
+        <div *ngIf="filter['client.fullname']" class="filter-label" (click)="filterLabel('client.fullname')">
+            Клієнт: {{filter['client.fullname']}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+        <div *ngIf="filter['city.name']" class="filter-label" (click)="filterLabel('city.name')">
+            Місто: {{filter['city.name']}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+        <div *ngIf="filter['course.name']" class="filter-label" (click)="filterLabel('course.name')">
+            Курс: {{filter['course.name']}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+        <div *ngIf="filter['group.name']" class="filter-label" (click)="filterLabel('group.name')">
+            Група: {{filter['group.name']}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+        <div *ngIf="filter.fullPrice" class="filter-label" (click)="filterLabel('fullPrice')">
+            Ціна: {{filter.fullPrice}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+        <div *ngIf="filter.leftToPay" class="filter-label" (click)="filterLabel('leftToPay')">
+            До оплати: {{filter.leftToPay}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
+    </div>
     <app-application-list [applications]="applications" *ngIf="applicationPage"></app-application-list>
     <app-e-application-list [eapplications]="eapplications" *ngIf="eapplicationPage"></app-e-application-list>
 </ion-content>

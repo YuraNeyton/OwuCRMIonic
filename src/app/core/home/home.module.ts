@@ -8,6 +8,7 @@ import {IonicModule} from '@ionic/angular';
 import {HomePage} from './home.page';
 import {ElementModule} from '../../elements/element.module';
 import {BrowserModule} from '@angular/platform-browser';
+import {HomeFilterComponent} from './home-filter/home-filter.component';
 
 const routes: Routes = [
     {
@@ -24,8 +25,8 @@ const routes: Routes = [
         // BrowserModule,
         ElementModule,
         RouterModule.forChild(routes)
-    ],
-    declarations: [HomePage]
+    ], entryComponents: [HomeFilterComponent],
+    declarations: [HomePage, HomeFilterComponent]
 })
 export class HomePageModule {
 }
