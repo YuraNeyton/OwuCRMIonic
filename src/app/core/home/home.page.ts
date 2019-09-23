@@ -8,6 +8,8 @@ import {EapplicationService} from '../../services/eapplication.service';
 import {Eapplication} from '../../models/eapplication';
 import {HomeFilterComponent} from './home-filter/home-filter.component';
 import {City} from '../../models/city';
+import {NotificationFCMService} from '../../services/notification-fcm.service';
+import {MaterialTableService} from '../../services/material-table.service';
 
 @Component({
     selector: 'app-home',
@@ -23,8 +25,9 @@ export class HomePage implements OnInit {
     applicationPage = true;
     eapplicationPage = false;
     sort = '';
+    count = 0;
     pageIndex = 1;
-    pageSize = 50;
+    pageSize = 17;
     countOfPages = 1;
     filter: any = {};
 
@@ -35,6 +38,8 @@ export class HomePage implements OnInit {
         private applicationService: ApplicationService,
         private eapplicationService: EapplicationService,
         public modalController: ModalController,
+        private fcm: NotificationFCMService,
+        private materialTableService: MaterialTableService
     ) {
     }
 
@@ -43,6 +48,9 @@ export class HomePage implements OnInit {
         if (this.applicationPage) {
             this.loadApplications();
         }
+        this.applicationService.$getHeader.subscribe((value: any) => {
+            this.loadSorted(value.name, value.element, value.e);
+        });
         this.loadFiltered();
     }
 
@@ -56,10 +64,16 @@ export class HomePage implements OnInit {
         return await modal.present();
     }
 
+    loadSorted(key: string, headerBlock: HTMLElement, event: any) {
+        this.sort = this.materialTableService.sort(key, headerBlock, event);
+        this.loadApplications();
+    }
+
     logout() {
         this.authService.logout().subscribe(() => {
             this.router.navigate(['/']);
             this.authService.menuShowIfLogin.next(false);
+            this.fcm.unsubscribeFromTopic('e-application');
         });
     }
 
@@ -75,18 +89,14 @@ export class HomePage implements OnInit {
         });
     }
 
-    loadApplications() {
+    sendLoadApplications() {
         const filterToSend = this.getFilterToSend();
-        this.applicationService.getApplications({
+        return this.applicationService.getApplications({
             q: filterToSend,
             sort: this.sort ? this.sort : 'createdAt DESC',
             limit: this.pageSize,
             offset: (this.pageIndex * this.pageSize) - this.pageSize,
             include: ['client', 'course', 'group', 'city']
-        }).subscribe((value: any) => {
-            this.applications = value.models;
-            // this.applicationPage = !this.applicationPage;
-            // this.eapplicationPage = false;
         });
     }
 
@@ -198,4 +208,27 @@ export class HomePage implements OnInit {
             this.loadApplications();
         }
     }
+
+    public loadPaginated(offset: number, e: any) {
+        this.pageIndex = this.materialTableService.calcNextPage({
+            countOfPages: this.countOfPages,
+            currentPage: this.pageIndex,
+            nextOffset: offset,
+            nextPage: e ? e.target.value : 0,
+            event: e
+        });
+        this.loadApplications();
+
+    }
+
+    public loadApplications() {
+        if (this.pageSize) {
+            this.sendLoadApplications().subscribe(response => {
+                this.count = response.count;
+                this.applications = response.models;
+                this.countOfPages = this.materialTableService.calcCountOfPages(this.count, this.pageSize);
+            });
+        }
+    }
 }
+

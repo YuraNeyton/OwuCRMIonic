@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content class="content-background">
-    <ion-fab *ngIf="applicationPage" horizontal="start" vertical="bottom" slot="fixed" (click)="presentModal()">
+    <ion-fab *ngIf="applicationPage" horizontal="end" vertical="bottom" slot="fixed" (click)="presentModal()">
         <ion-fab-button style="--background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);">
             <ion-icon name="search"></ion-icon>
         </ion-fab-button>
@@ -55,3 +55,16 @@
     <app-application-list [applications]="applications" *ngIf="applicationPage"></app-application-list>
     <app-e-application-list [eapplications]="eapplications" *ngIf="eapplicationPage"></app-e-application-list>
 </ion-content>
+<ion-footer class="foo">
+    <div class="footer-panel">
+        <div>
+            <ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large" class="icon"></ion-icon>
+        </div>
+        <div>
+            <ion-title class="title-color">{{pageIndex}} з {{countOfPages}}</ion-title>
+        </div>
+        <div>
+            <ion-icon name="arrow-dropright-circle" (click)="loadPaginated(1, null)" size="large" class="icon"></ion-icon>
+        </div>
+    </div>
+</ion-footer>

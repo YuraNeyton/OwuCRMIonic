@@ -1,0 +1,106 @@
+<ion-header>
+    <ion-toolbar class="toolbar-color">
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">
+                <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="title" *ngIf="a">{{a.client.name}} {{a.client.surname}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+    <!--<ion-card *ngIf="c">-->
+    <!--<ion-list>-->
+    <!--<ion-item *ngIf="c.name">-->
+    <!--<ion-label>Ім'я:</ion-label>-->
+    <!--{{c.name}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="c.surname">-->
+    <!--<ion-label>Прізвище:</ion-label>-->
+    <!--{{c.surname}}-->
+    <!--</ion-item>-->
+    <!--<ion-list *ngIf="c.address">-->
+    <!--<ion-item>-->
+    <!--<ion-label>Адреса:</ion-label>-->
+    <!--{{c.address.address}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="c.address">-->
+    <!--<div id="map_canvas" style="height: 100%; width: 300px"></div>-->
+    <!--</ion-item>-->
+    <!--</ion-list>-->
+    <!--<ion-item *ngIf="c.age">-->
+    <!--<ion-label>Вік:</ion-label>-->
+    <!--{{c.age}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="c.email">-->
+    <!--<ion-label>Email:</ion-label>-->
+    <!--{{c.email}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="c.phone">-->
+    <!--<ion-label>Телефон:</ion-label>-->
+    <!--{{c.phone}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="c.createdAt">-->
+    <!--<ion-label>Створено:</ion-label>-->
+    <!--{{c.createdAt |date}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="c.updatedAt">-->
+    <!--<ion-label>Оновлено:</ion-label>-->
+    <!--{{c.updatedAt | date}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="c.statusId">-->
+    <!--<ion-label>Статус:</ion-label>-->
+    <!--<div style="display: flex; justify-content: space-between; height: available; padding: 5px" [ngStyle]="{ 'background': clientStatuses | statusColor: c.statusId }">-->
+    <!--{{clientStatuses | statusName: c.statusId}}-->
+    <!--</div>-->
+    <!--</ion-item>-->
+    <!--</ion-list>-->
+    <!--</ion-card>-->
+    <ion-card *ngIf="a">
+        <ion-list>
+            <ion-item *ngIf="a.city">
+                <ion-label>Місто:</ion-label>
+                {{a.city.name}}
+            </ion-item>
+            <ion-item *ngIf="a.course">
+                <ion-label>Курс:</ion-label>
+                {{a.course.name}}
+            </ion-item>
+            <ion-item *ngIf="a.group">
+                <ion-label>Група:</ion-label>
+                {{a.group.name}}
+            </ion-item>
+            <ion-item *ngIf="a.date">
+                <ion-label>Дата:</ion-label>
+                {{a.date | date}}
+            </ion-item>
+            <ion-item *ngIf="a.fullPrice">
+                <ion-label>Ціна:</ion-label>
+                {{a.fullPrice}}
+            </ion-item>
+            <ion-item *ngIf="a.leftToPay">
+                <ion-label>До оплати:</ion-label>
+                {{a.leftToPay}}
+            </ion-item>
+            <ion-item>
+                <ion-label>Має практику:</ion-label>
+                <div *ngIf="a.hasPractice === 0">
+                    Ні
+                </div>
+                <div *ngIf="a.hasPractice === 1">
+                    Так
+                </div>
+            </ion-item>
+            <ion-item>
+                <ion-label>Отримав ноутбук:</ion-label>
+                <div *ngIf="a.needLaptop === 0">
+                    Ні
+                </div>
+                <div *ngIf="a.needLaptop === 1">
+                    Так
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

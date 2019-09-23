@@ -15,7 +15,7 @@ export class ClientsPage implements OnInit {
     clients: Client[];
     count = 0;
     pageIndex = 1;
-    pageSize = 10;
+    pageSize = 19;
     countOfPages = 1;
     sort = '';
     filter: any = {};

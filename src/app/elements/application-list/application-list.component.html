@@ -1,32 +1,70 @@
-<ng-container *ngFor="let a of applications">
-    <ion-card *ngIf="applications" class="bottom-border">
-        <div class="card-title">{{a.client.name}} {{a.client.surname}}</div>
-        <ion-list>
-            <ion-item *ngIf="a.city">
-                <ion-label>Місто:</ion-label>
-                {{a.city.name}}
-            </ion-item>
-            <ion-item *ngIf="a.course">
-                <ion-label>Курс:</ion-label>
-                {{a.course.name}}
-            </ion-item>
-            <ion-item *ngIf="a.group">
-                <ion-label>Група:</ion-label>
-                {{a.group.name}}
-            </ion-item>
-            <ion-item *ngIf="a.date">
-                <ion-label>Дата:</ion-label>
-                {{a.date | date}}
-            </ion-item>
-            <ion-item *ngIf="a.fullPrice">
-                <ion-label>Ціна:</ion-label>
-                {{a.fullPrice}}
-            </ion-item>
-            <ion-item *ngIf="a.leftToPay">
-                <ion-label>До оплати:</ion-label>
-                {{a.leftToPay}}
-            </ion-item>
-        </ion-list>
-    </ion-card>
-</ng-container>
+<ion-card *ngIf="applications" class="bottom-border">
+
+    <div class="card-title1" #headerBlock>
+        <div style="padding-left: 5px">#</div>
+        <div style="padding-left: 30px" (click)="getHeader('client.name',headerBlock,$event)">Клієнт</div>
+        <div (click)="getHeader('city.name',headerBlock,$event)">Місто</div>
+        <div style="padding-right: 45px" (click)="getHeader('group.name',headerBlock,$event)">Група</div>
+    </div>
+
+    <ion-row *ngFor="let a of applications; index as i" style="background: white; border-bottom: 1px solid grey; font-size: 12px"
+             (click)="presentModal(a)">
+        <ion-col>
+            {{i + 1}}
+        </ion-col>
+        <ion-col *ngIf="a.client && a.client.name">
+            {{a.client.name}}
+        </ion-col>
+        <ion-col *ngIf="a.city && a.city.name">
+            {{a.city.name}}
+        </ion-col>
+        <ion-col *ngIf="a.group && a.group.name">
+            {{a.group.name}}
+        </ion-col>
+
+    </ion-row>
+
+
+    <!--<div class="card-title">{{a.client.name}} {{a.client.surname}}</div>-->
+
+
+    <!--<ion-list>-->
+    <!--<div class="card-title1">-->
+    <!--<div style="padding-left: 14px">Місто</div>-->
+    <!--<div>Курс</div>-->
+    <!--<div style="padding-right: 39px">Ціна</div>-->
+    <!--</div>-->
+    <!--<ion-item style="font-size: 14px">-->
+    <!--<ion-label *ngIf="a.city">{{a.city.name}}</ion-label>-->
+    <!--<ion-label *ngIf="a.course" style="padding-left: 35px;">{{a.course.name}}</ion-label>-->
+    <!--<ion-label *ngIf="a.fullPrice" style="text-align: center;">{{a.fullPrice}}</ion-label>-->
+    <!--</ion-item>-->
+
+
+    <!--<ion-item *ngIf="a.city">-->
+    <!--<ion-label>Місто:</ion-label>-->
+    <!--{{a.city.name}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="a.course">-->
+    <!--<ion-label>Курс:</ion-label>-->
+    <!--{{a.course.name}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="a.group">-->
+    <!--<ion-label>Група:</ion-label>-->
+    <!--{{a.group.name}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="a.date">-->
+    <!--<ion-label>Дата:</ion-label>-->
+    <!--{{a.date | date}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="a.fullPrice">-->
+    <!--<ion-label>Ціна:</ion-label>-->
+    <!--{{a.fullPrice}}-->
+    <!--</ion-item>-->
+    <!--<ion-item *ngIf="a.leftToPay">-->
+    <!--<ion-label>До оплати:</ion-label>-->
+    <!--{{a.leftToPay}}-->
+    <!--</ion-item>-->
+    <!--</ion-list>-->
+</ion-card>
 

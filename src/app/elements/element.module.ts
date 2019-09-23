@@ -6,17 +6,18 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {ApplicationListComponent} from './application-list/application-list.component';
 import {EApplicationListComponent} from './e-application-list/e-application-list.component';
+import {SingleApplicationComponent} from './single-application/single-application.component';
 
 
 @NgModule({
-    declarations: [MenuComponent, ApplicationListComponent, EApplicationListComponent],
+    declarations: [MenuComponent, ApplicationListComponent, EApplicationListComponent, SingleApplicationComponent],
     imports: [
         CommonModule,
         IonicModule,
         // BrowserModule,
         RouterModule
-    ],
-    exports: [MenuComponent, ApplicationListComponent, EApplicationListComponent]
+    ], entryComponents: [SingleApplicationComponent],
+    exports: [MenuComponent, ApplicationListComponent, EApplicationListComponent, SingleApplicationComponent]
 })
 export class ElementModule {
 }

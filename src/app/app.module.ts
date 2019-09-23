@@ -15,6 +15,8 @@ import {
     GoogleMaps,
     GoogleMap,
 } from '@ionic-native/google-maps';
+import {LocalNotifications} from '@ionic-native/local-notifications/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,6 +27,8 @@ import {
         SplashScreen,
         // GoogleMap,
         GoogleMaps,
+        LocalNotifications,
+        FCM,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         {
             provide: HTTP_INTERCEPTORS,

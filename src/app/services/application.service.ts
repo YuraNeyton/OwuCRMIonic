@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ApplicationService {
     $Filter = new Subject();
+    $getHeader = new Subject();
     private applicationsURL = '';
 
     constructor(

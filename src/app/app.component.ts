@@ -4,6 +4,9 @@ import {MenuController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AuthService} from './services/auth.service';
+import {NotificationFCMService} from './services/notification-fcm.service';
+import {LocalNotifications} from '@ionic-native/local-notifications/ngx';
+import {LocalNotificationsService} from './services/local-notifications.service';
 
 @Component({
     selector: 'app-root',
@@ -18,7 +21,9 @@ export class AppComponent {
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
         private menuCtrl: MenuController,
-        private authService: AuthService
+        private authService: AuthService,
+        private fcm: NotificationFCMService,
+        private ln: LocalNotificationsService
     ) {
         this.initializeApp();
     }
@@ -32,10 +37,17 @@ export class AppComponent {
         this.authService.menuShowIfLogin.subscribe(value => {
             this.showMenu = !!value;
         });
-
+        this.notification();
     }
 
     closeMenu() {
         this.menuCtrl.close('first');
+    }
+
+    notification() {
+        this.fcm.onNotification().subscribe(value => {
+            console.log(value);
+            // this.ln.localNotifications(value);
+        });
     }
 }

@@ -1,7 +1,7 @@
 .card-title{
   color: white;
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   padding: 5px 0 5px 0;
   border: 2px solid white;
 }
@@ -23,5 +23,15 @@
   border-bottom: #e6ebeb solid 1px;
 }
 .bottom-border{
-  border-bottom: 2px solid white;
+  border: 2px solid #e6ebeb;
+}
+
+.card-title1{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  padding: 5px 0 5px 0;
+  border-radius: 10px;
 }

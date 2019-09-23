@@ -1,6 +1,7 @@
 import {Component, OnInit, Renderer2} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {NotificationFCMService} from '../../services/notification-fcm.service';
 
 @Component({
     selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginPage implements OnInit {
     constructor(
         private authService: AuthService,
         private router: Router,
-        private renderer: Renderer2
+        private renderer: Renderer2,
+        private fcm: NotificationFCMService
     ) {
     }
 
@@ -31,6 +33,7 @@ export class LoginPage implements OnInit {
                         this.router.navigate(['/home']);
                         console.log(principal);
                         this.authService.menuShowIfLogin.next(true);
+                        this.fcm.subscribeToTopic('e-application');
                     }
                 },
                 (err) => {

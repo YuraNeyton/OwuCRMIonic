@@ -1,44 +1,35 @@
 <ion-card style="border: 2px solid #e6ebeb">
-    <!--<ion-grid>-->
-    <!--<ion-row class="table-header" #headerBlock>-->
-    <!--<ion-col>-->
-    <!--<div class="table-header-text" (click)="getHeader('name',headerBlock,$event)">Ім'я</div>-->
-    <!--</ion-col>-->
-    <!--<ion-col>-->
-    <!--<div class="table-header-text" (click)="getHeader('surname',headerBlock,$event)">Прізвище</div>-->
-    <!--</ion-col>-->
-    <!--<ion-col>-->
-    <!--<div class="table-header-text" (click)="getHeader('phone',headerBlock,$event)">Телефон</div>-->
-    <!--</ion-col>-->
-    <!--</ion-row>-->
-    <!--<ion-row *ngFor="let c of clients" (click)="presentModal(c)">-->
-    <!--<ion-col class="content-text-white">-->
-    <!--<div>{{c.name}}</div>-->
-    <!--</ion-col>-->
-    <!--<ion-col class="content-text-white">-->
-    <!--<div>{{c.surname}}</div>-->
-    <!--</ion-col>-->
-    <!--<ion-col class="content-text-white">-->
-    <!--<div>{{c.phone}}</div>-->
-    <!--</ion-col>-->
-    <!--</ion-row>-->
-    <!--</ion-grid>-->
+
     <div class="card-title1" #headerBlock>
-        <div style="padding-left: 14px" (click)="getHeader('name',headerBlock,$event)">Ім'я</div>
-        <div (click)="getHeader('surname',headerBlock,$event)">Прізвище</div>
-        <div style="padding-right: 39px" (click)="getHeader('phone',headerBlock,$event)">Телефон</div>
+        <div style="padding-left: 5px">#</div>
+        <div style="padding-left: 52px" (click)="getHeader('name',headerBlock,$event)">Ім'я</div>
+        <div style="padding-left: 35px" (click)="getHeader('surname',headerBlock,$event)">Прізвище</div>
+        <div style="padding-right: 24px" (click)="getHeader('phone',headerBlock,$event)">Телефон</div>
     </div>
-    <ion-list *ngIf="clients">
-        <ion-item *ngFor="let c of clients" (click)="presentModal(c)">
-            <ion-label *ngIf="c.name">
-                {{c.name}}
-            </ion-label>
-            <ion-label *ngIf="c.surname">
-                {{c.surname}}
-            </ion-label>
-            <ion-label *ngIf="c.phone">
-                {{c.phone}}
-            </ion-label>
-        </ion-item>
-    </ion-list>
+
+    <ion-row *ngFor="let c of clients; index as i" style="background: white; border-bottom: 1px solid grey; font-size: 12px"
+             (click)="presentModal(c)">
+        <ion-col>
+            {{i + 1}}
+        </ion-col>
+        <ion-col *ngIf="c.name">
+            {{c.name}}
+        </ion-col>
+        <ion-col *ngIf="!c.name">
+            -
+        </ion-col>
+        <ion-col *ngIf="c.surname">
+            {{c.surname}}
+        </ion-col>
+        <ion-col *ngIf="!c.surname">
+            -
+        </ion-col>
+        <ion-col *ngIf="c.phone">
+            {{c.phone}}
+        </ion-col>
+        <ion-col *ngIf="!c.phone">
+            -
+        </ion-col>
+
+    </ion-row>
 </ion-card>
