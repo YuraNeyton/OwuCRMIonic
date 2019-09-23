@@ -1,32 +1,8 @@
-.card-title{
-  color: white;
-  text-align: center;
-  font-size: 16px;
-  padding: 5px 0 5px 0;
-  border: 2px solid white;
-}
-.card-content{
-  display: flex;
-  flex-direction: column;
-}
-.card-type-info{
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 0 5px 10px;
-}
-.card-info{
-  color: white;
-  padding: 0 0 10px 15px;
-}
-.card-column{
-  border-bottom: #e6ebeb solid 1px;
-}
 .bottom-border{
   border: 2px solid #e6ebeb;
 }
 
-.card-title1{
+.card-title{
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -34,4 +10,10 @@
   font-size: 14px;
   padding: 5px 0 5px 0;
   border-radius: 10px;
+}
+
+.row{
+  background: white;
+  border-bottom: 1px solid grey;
+  font-size: 12px
 }

@@ -1,21 +1,4 @@
-<!--<div *ngFor="let p of pages">-->
-<!--<ion-menu-toggle *ngIf="p.url">-->
-<!--<ion-item [routerLink]="p.url" routerDirection="root" routerLinkActive="active">-->
-<!--<ion-icon name="home" slot="start"></ion-icon>-->
-<!--<ion-label>{{p.title}}</ion-label>-->
-<!--</ion-item>-->
-<!--<div button *ngIf="p.children?.length > 0" (click)="p.open = !p.open"-->
-<!--[class.active-parent]="p.open" detail="false">-->
-<!--<ion-icon slot="start" name="arrow-forward" *ngIf="!p.open"></ion-icon>-->
-<!--<ion-icon slot="start" name="arrow-down" *ngIf="p.open"></ion-icon>-->
-<!--&lt;!&ndash;<ion-label>{{p.title}}</ion-label>&ndash;&gt;-->
-<!--</div>-->
-
-<!--</ion-menu-toggle>-->
-
-
-<!--</div>-->
-<ion-list style="padding: 0">
+<ion-list class="padding-zero">
     <ng-container *ngFor="let p of pages">
         <ion-item class="content-background">
             <ion-icon [name]="p.icon" class="icon-color" slot="start" [routerLink]="p.url" (click)="closeMenu()"></ion-icon>
@@ -27,7 +10,7 @@
                           name="arrow-up" *ngIf="p.open && p.children?.length>0"></ion-icon>
             </div>
         </ion-item>
-        <ion-list *ngIf="p.open" style="padding: 0">
+        <ion-list *ngIf="p.open" class="padding-zero">
                 <ion-item *ngFor="let sub of p.children" [routerLink]="sub.url"
                         routerDirection="root"
                         routerLinkActive="active-cat-item"

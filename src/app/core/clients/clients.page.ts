@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuController, ModalController} from '@ionic/angular';
 import {ClientService} from '../../services/client.service';
 import {Client} from '../../models/client';

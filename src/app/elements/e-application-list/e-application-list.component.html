@@ -1,67 +1,8 @@
 <ng-container *ngFor="let e of eapplications">
     <ion-card *ngIf="eapplications && e.active == 1" class="bottom-border">
-        <div class="card-title">{{e.name}}</div>
-        <!--<div class="card-content">-->
-        <!--<div *ngIf="e.email" class="card-column">-->
-        <!--<div class="card-type-info">Емейл:</div>-->
-        <!--<div class="card-info">-->
-        <!--{{e.email}}-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div *ngIf="e.phone" class="card-column">-->
-        <!--<div class="card-type-info">Телефон:</div>-->
-        <!--<div class="card-info">-->
-        <!--{{e.phone}}-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div *ngIf="e.city" class="card-column">-->
-        <!--<div class="card-type-info">Місто:</div>-->
-        <!--<div class="card-info">-->
-        <!--{{e.city}}-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div *ngIf="e.course" class="card-column">-->
-        <!--<div class="card-type-info">Курс:</div>-->
-        <!--<div class="card-info">-->
-        <!--{{e.course}}-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div *ngIf="e.type" class="card-column">-->
-        <!--<div class="card-type-info">Тип:</div>-->
-        <!--<div class="card-info">-->
-        <!--{{e.type}}-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div *ngIf="e.wantPractice" class="card-column">-->
-        <!--<div class="card-type-info">З практикою:</div>-->
-        <!--<div class="card-info">-->
-        <!--<div *ngIf="e.wantPractice == 1">-->
-        <!--Так 😊-->
-        <!--</div>-->
-        <!--<div *ngIf="e.wantPractice == 0">-->
-        <!--Ні 😒-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div *ngIf="e.social" class="card-column">-->
-        <!--<div class="card-type-info">Джерело:</div>-->
-        <!--<div class="card-info">-->
-        <!--{{e.social}}-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div *ngIf="e.comment" class="card-column">-->
-        <!--<div class="card-type-info">Коментар:</div>-->
-        <!--<div class="card-info">-->
-        <!--{{e.comment}}-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div *ngIf="e.createdAt" class="card-column">-->
-        <!--<div class="card-type-info">Дата:</div>-->
-        <!--<div class="card-info">-->
-        <!--{{e.createdAt | date}}-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
+
+        <div class="card-title" *ngIf="e.name">{{e.name}}</div>
+
         <ion-list>
             <ion-item *ngIf="e.email">
                 <ion-label>Емейл:</ion-label>

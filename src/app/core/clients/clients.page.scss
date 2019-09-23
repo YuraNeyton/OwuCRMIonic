@@ -6,7 +6,6 @@
 }
 
 .filter-label {
-
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -34,6 +33,7 @@
   height: 50px;
   background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);
 }
+
 .footer-panel{
   background: white;
   margin: 5px;
@@ -45,10 +45,12 @@
   border-radius: 20px;
 
 }
+
 .title-color{
   color: rgb(0, 0, 0);
   font-family: 'Roboto', sans-serif;
 }
+
 .icon{
   color: grey;
   padding-top: 3px;

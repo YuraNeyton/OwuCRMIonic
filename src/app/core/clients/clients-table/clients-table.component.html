@@ -1,35 +1,19 @@
-<ion-card style="border: 2px solid #e6ebeb">
+<ion-card class="card-border">
 
-    <div class="card-title1" #headerBlock>
+    <div class="card-title" #headerBlock>
         <div style="padding-left: 5px">#</div>
         <div style="padding-left: 52px" (click)="getHeader('name',headerBlock,$event)">Ім'я</div>
         <div style="padding-left: 35px" (click)="getHeader('surname',headerBlock,$event)">Прізвище</div>
         <div style="padding-right: 24px" (click)="getHeader('phone',headerBlock,$event)">Телефон</div>
     </div>
 
-    <ion-row *ngFor="let c of clients; index as i" style="background: white; border-bottom: 1px solid grey; font-size: 12px"
-             (click)="presentModal(c)">
-        <ion-col>
-            {{i + 1}}
-        </ion-col>
-        <ion-col *ngIf="c.name">
-            {{c.name}}
-        </ion-col>
-        <ion-col *ngIf="!c.name">
-            -
-        </ion-col>
-        <ion-col *ngIf="c.surname">
-            {{c.surname}}
-        </ion-col>
-        <ion-col *ngIf="!c.surname">
-            -
-        </ion-col>
-        <ion-col *ngIf="c.phone">
-            {{c.phone}}
-        </ion-col>
-        <ion-col *ngIf="!c.phone">
-            -
-        </ion-col>
-
+    <ion-row *ngFor="let c of clients; index as i" class="row" (click)="presentModal(c)">
+        <ion-col>{{i + 1}}</ion-col>
+        <ion-col *ngIf="c.name">{{c.name}}</ion-col>
+        <ion-col *ngIf="!c.name">-</ion-col>
+        <ion-col *ngIf="c.surname">{{c.surname}}</ion-col>
+        <ion-col *ngIf="!c.surname">-</ion-col>
+        <ion-col *ngIf="c.phone">{{c.phone}}</ion-col>
+        <ion-col *ngIf="!c.phone">-</ion-col>
     </ion-row>
 </ion-card>

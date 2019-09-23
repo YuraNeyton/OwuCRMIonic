@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
         private menuCtr: MenuController,
         private applicationService: ApplicationService,
         private eapplicationService: EapplicationService,
-        public modalController: ModalController,
+        private modalController: ModalController,
         private fcm: NotificationFCMService,
         private materialTableService: MaterialTableService
     ) {
@@ -55,12 +55,9 @@ export class HomePage implements OnInit {
     }
 
     async presentModal() {
-
-        console.log(this.authService.getLocalPrincipal());
         const modal = await this.modalController.create({
             component: HomeFilterComponent,
         });
-        // this.segmentChanged('application');
         return await modal.present();
     }
 
@@ -84,7 +81,6 @@ export class HomePage implements OnInit {
     loadFiltered() {
         this.applicationService.$Filter.subscribe((value: any) => {
             this.filter = value;
-            console.log(this.filter);
             this.loadApplications();
         });
     }

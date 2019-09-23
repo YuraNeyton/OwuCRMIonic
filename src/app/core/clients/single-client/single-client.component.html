@@ -26,7 +26,7 @@
                     {{c.address.address}}
                 </ion-item>
                 <ion-item *ngIf="c.address">
-                    <div id="map_canvas" style="height: 100%; width: 300px"></div>
+                    <div id="map_canvas" class="map-size"></div>
                 </ion-item>
             </ion-list>
             <ion-item *ngIf="c.age">
@@ -51,7 +51,7 @@
             </ion-item>
             <ion-item *ngIf="c.statusId">
                 <ion-label>Статус:</ion-label>
-                <div style="display: flex; justify-content: space-between; height: available; padding: 5px" [ngStyle]="{ 'background': clientStatuses | statusColor: c.statusId }">
+                <div class="status" [ngStyle]="{ 'background': clientStatuses | statusColor: c.statusId }">
                     {{clientStatuses | statusName: c.statusId}}
                 </div>
             </ion-item>

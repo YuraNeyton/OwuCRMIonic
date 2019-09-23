@@ -31,7 +31,6 @@ export class LoginPage implements OnInit {
                 (principal) => {
                     if (principal) {
                         this.router.navigate(['/home']);
-                        console.log(principal);
                         this.authService.menuShowIfLogin.next(true);
                         this.fcm.subscribeToTopic('e-application');
                     }
@@ -41,13 +40,10 @@ export class LoginPage implements OnInit {
                         const inputs = document.getElementsByTagName('input');
                         this.renderer.setStyle(inputs.item(0), 'border', '2px solid #bf2c2c');
                         this.renderer.setStyle(inputs.item(1), 'border', '2px solid #bf2c2c');
-
-
                     }
                 }
             );
     }
-
     styleChange(element) {
         this.renderer.setStyle(element, 'border', '2px solid #3498db');
     }

@@ -1,22 +1,16 @@
-.table-header {
-  border-radius: 10px;
-  border: 2px solid white;
-}
-
-.table-header ion-col {
-  color: white;
-}
-.content-text-white{
-  color: white;
-  border-left: white 1px solid;
-  border-right: white 1px solid;
-  border-bottom: white 1px solid;
-}
-.card-title1{
+.card-title{
   display: flex;
   justify-content: space-between;
   text-align: center;
   color: white;
   font-size: 14px;
   padding: 5px 0 5px 0;
+}
+
+.card-border{
+  border: 2px solid #e6ebeb
+}
+
+.row{
+  background: white; border-bottom: 1px solid grey; font-size: 12px
 }

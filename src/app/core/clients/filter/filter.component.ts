@@ -22,7 +22,6 @@ export class FilterComponent implements OnInit {
 
     close() {
         this.modalController.dismiss({
-            // 'dismissed': true
             data: this.sort
         });
     }

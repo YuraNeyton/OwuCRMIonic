@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Application} from '../../models/application';
-import {Client} from '../../models/client';
-import {SingleClientComponent} from '../../core/clients/single-client/single-client.component';
 import {ModalController} from '@ionic/angular';
 import {SingleApplicationComponent} from '../single-application/single-application.component';
 import {ApplicationService} from '../../services/application.service';
@@ -21,7 +19,6 @@ export class ApplicationListComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.applications);
     }
 
     getHeader(key: string, headerBlock: HTMLElement, event: any) {
