@@ -57,6 +57,7 @@ export class HomePage implements OnInit {
     async presentModal() {
         const modal = await this.modalController.create({
             component: HomeFilterComponent,
+            componentProps: {component: 'homePage'}
         });
         return await modal.present();
     }
@@ -80,8 +81,10 @@ export class HomePage implements OnInit {
 
     loadFiltered() {
         this.applicationService.$Filter.subscribe((value: any) => {
-            this.filter = value;
-            this.loadApplications();
+            if (value.c === 'homePage') {
+                this.filter = value.f;
+                this.loadApplications();
+            }
         });
     }
 

@@ -1,0 +1,16 @@
+<ion-card class="card-border">
+
+  <div class="card-title" #headerBlock>
+    <div style="padding-left: 5px">#</div>
+    <div style="padding-left: 17px" (click)="getHeader('name',headerBlock,$event)">Ім'я</div>
+    <div (click)="getHeader('course.name',headerBlock,$event)">Курс</div>
+    <div style="padding-right: 42px" (click)="getHeader('city.name',headerBlock,$event)">Місто</div>
+  </div>
+
+  <ion-row *ngFor="let g of groups; index as i" class="row" (click)="presentModal(g)">
+    <ion-col>{{i + 1}}</ion-col>
+    <ion-col *ngIf="g.name">{{g.name}}</ion-col>
+    <ion-col *ngIf="g.course.name">{{g.course.name}}</ion-col>
+    <ion-col *ngIf="g.city.name">{{g.city.name}}</ion-col>
+  </ion-row>
+</ion-card>

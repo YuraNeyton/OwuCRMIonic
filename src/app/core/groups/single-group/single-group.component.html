@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar class="toolbar-color">
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title" *ngIf="g">{{g.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+  <ion-card *ngIf="g">
+    <ion-list>
+      <ion-item *ngIf="g.name">
+        <ion-label>Ім'я:</ion-label>
+        {{g.name}}
+      </ion-item>
+        <ion-item *ngIf="g.freePractice">
+          <ion-label>Вільна практика:</ion-label>
+          {{g.freePractice}}
+        </ion-item>
+        <ion-item *ngIf="g.usedPractice">
+          <ion-label>Використана практика:</ion-label>
+          {{g.usedPractice}}
+        </ion-item>
+      <ion-item *ngIf="g.startDate">
+        <ion-label>Початкова дата:</ion-label>
+        {{g.startDate | date}}
+      </ion-item>
+      <ion-item *ngIf="g.startTime">
+        <ion-label>Початкова час:</ion-label>
+        {{g.startTime}}
+      </ion-item>
+      <ion-item *ngIf="g.expirationDate">
+        <ion-label>Дата закінчення:</ion-label>
+        {{g.expirationDate}}
+      </ion-item>
+      <ion-item *ngIf="g.course.name">
+        <ion-label>Курс:</ion-label>
+        {{g.course.name}}
+      </ion-item>
+      <ion-item *ngIf="g.city.name">
+        <ion-label>Місто:</ion-label>
+        {{g.city.name}}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

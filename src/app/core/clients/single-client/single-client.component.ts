@@ -31,7 +31,6 @@ export class SingleClientComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.c);
         this.clientStatusesService.getStatuses({}).subscribe(res => this.clientStatuses = res.models);
     }
 

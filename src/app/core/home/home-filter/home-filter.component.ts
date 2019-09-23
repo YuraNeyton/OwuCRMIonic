@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {ApplicationService} from '../../../services/application.service';
 
@@ -8,6 +8,7 @@ import {ApplicationService} from '../../../services/application.service';
     styleUrls: ['./home-filter.component.scss'],
 })
 export class HomeFilterComponent implements OnInit {
+    @Input() component: string;
     sort = '';
     filterParams = {
         'client.fullname': '',
@@ -35,7 +36,7 @@ export class HomeFilterComponent implements OnInit {
     }
 
     filter() {
-        this.applicationService.$Filter.next(this.filterParams);
+        this.applicationService.$Filter.next({c: this.component, f: this.filterParams});
         this.close();
     }
 }

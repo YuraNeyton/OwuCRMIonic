@@ -25,7 +25,7 @@ export class ClientsPage implements OnInit {
         private menuCtr: MenuController,
         private clientsService: ClientService,
         private materialTableService: MaterialTableService,
-        public modalController: ModalController
+        private modalController: ModalController
     ) {
     }
 
@@ -36,7 +36,6 @@ export class ClientsPage implements OnInit {
             this.loadSorted(value.name, value.element, value.e);
         });
         this.loadFiltered();
-        console.log(this.clients);
     }
 
     async presentModal() {

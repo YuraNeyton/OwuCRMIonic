@@ -1,12 +1,56 @@
 <ion-header>
-  <ion-toolbar color="dark">
+  <ion-toolbar class="toolbar-color">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentModal()">
+        <ion-icon name="search" class="icon-color"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title class="title" >Заявки</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="content-background">
+  <div class="filter-bar" *ngIf="filter">
+    <div *ngIf="filter['client.fullname']" class="filter-label" (click)="filterLabel('client.fullname')">
+      Клієнт: {{filter['client.fullname']}}
+      <ion-icon name="close" class="filter-icon"></ion-icon>
+    </div>
+    <div *ngIf="filter['city.name']" class="filter-label" (click)="filterLabel('city.name')">
+      Місто: {{filter['city.name']}}
+      <ion-icon name="close" class="filter-icon"></ion-icon>
+    </div>
+    <div *ngIf="filter['course.name']" class="filter-label" (click)="filterLabel('course.name')">
+      Курс: {{filter['course.name']}}
+      <ion-icon name="close" class="filter-icon"></ion-icon>
+    </div>
+    <div *ngIf="filter['group.name']" class="filter-label" (click)="filterLabel('group.name')">
+      Група: {{filter['group.name']}}
+      <ion-icon name="close" class="filter-icon"></ion-icon>
+    </div>
+    <div *ngIf="filter.fullPrice" class="filter-label" (click)="filterLabel('fullPrice')">
+      Ціна: {{filter.fullPrice}}
+      <ion-icon name="close" class="filter-icon"></ion-icon>
+    </div>
+    <div *ngIf="filter.leftToPay" class="filter-label" (click)="filterLabel('leftToPay')">
+      До оплати: {{filter.leftToPay}}
+      <ion-icon name="close" class="filter-icon"></ion-icon>
+    </div>
+  </div>
+  <app-application-list [applications]="applications"></app-application-list>
 </ion-content>
+<ion-footer class="foo">
+  <div class="footer-panel">
+    <div>
+      <ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large" class="icon"></ion-icon>
+    </div>
+    <div>
+      <ion-title class="title-color">{{pageIndex}} з {{countOfPages}}</ion-title>
+    </div>
+    <div>
+      <ion-icon name="arrow-dropright-circle" (click)="loadPaginated(1, null)" size="large" class="icon"></ion-icon>
+    </div>
+  </div>
+</ion-footer>
