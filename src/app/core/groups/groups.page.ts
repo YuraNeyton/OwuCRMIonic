@@ -5,7 +5,6 @@ import {Observable} from 'rxjs';
 import {City} from '../../models/city';
 import {GroupService} from '../../services/group.service';
 import {MaterialTableService} from '../../services/material-table.service';
-import {SingleGroupComponent} from './single-group/single-group.component';
 import {FilterGroupsComponent} from './filter-groups/filter-groups.component';
 
 @Component({
@@ -152,6 +151,12 @@ export class GroupsPage implements OnInit {
             this.filter.usedPractice = '';
             this.loadGroups();
         }
+    }
+    doRefresh(e) {
+        setTimeout(() => {
+            this.ngOnInit();
+            e.target.complete();
+        }, 550);
     }
 
 }

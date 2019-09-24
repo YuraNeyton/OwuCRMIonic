@@ -1,43 +1,44 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ConfigService} from './config.service';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {addParams} from '../helpers/url-helper';
 import {Course} from '../models/course';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CourseService {
+    $getHeader = new Subject();
+    $Filtered = new Subject();
+    private coursesURL = '';
 
-  private coursesURL = '';
+    constructor(
+        private http: HttpClient,
+        private config: ConfigService
+    ) {
+        this.coursesURL = config.api + '/courses';
+    }
 
-  constructor(
-    private http: HttpClient,
-    private config: ConfigService
-  ) {
-    this.coursesURL = config.api + '/courses';
-  }
+    getCourseById(id: number, query = {}): Observable<Course> {
+        const urlToRequest = addParams(`${this.coursesURL}/${id}`, query);
+        return this.http.get<Course>(urlToRequest);
+    }
 
-  getCourseById(id: number, query = {}): Observable<Course> {
-    const urlToRequest = addParams(`${this.coursesURL}/${id}`, query);
-    return this.http.get<Course>(urlToRequest);
-  }
+    getCourses(query = {}): Observable<any> {
+        const urlToRequest = addParams(this.coursesURL, query);
+        return this.http.get<Course[]>(urlToRequest);
+    }
 
-  getCourses(query = {}): Observable<any> {
-    const urlToRequest = addParams(this.coursesURL, query);
-    return this.http.get<Course[]>(urlToRequest);
-  }
+    create(model: Course): Observable<Course> {
+        return this.http.post<Course>(this.coursesURL, model);
+    }
 
-  create(model: Course): Observable<Course> {
-    return this.http.post<Course>(this.coursesURL, model);
-  }
+    remove(id: number | string): Observable<Course> {
+        return this.http.delete<Course>(`${this.coursesURL}/${id}`);
+    }
 
-  remove(id: number | string): Observable<Course> {
-    return this.http.delete<Course>(`${this.coursesURL}/${id}`);
-  }
-
-  update(id: number, course: Course) {
-    return this.http.put<Course>(`${this.coursesURL}/${id}`, course);
-  }
+    update(id: number, course: Course) {
+        return this.http.put<Course>(`${this.coursesURL}/${id}`, course);
+    }
 }

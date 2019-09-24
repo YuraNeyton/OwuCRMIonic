@@ -229,5 +229,12 @@ export class HomePage implements OnInit {
             });
         }
     }
+
+    doRefresh(e) {
+        setTimeout(() => {
+            this.ngOnInit();
+            e.target.complete();
+        }, 550);
+    }
 }
 

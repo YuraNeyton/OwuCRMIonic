@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Group} from '../../../models/group';
 import {GroupService} from '../../../services/group.service';
-import {Client} from '../../../models/client';
-import {SingleClientComponent} from '../../clients/single-client/single-client.component';
 import {ModalController} from '@ionic/angular';
 import {SingleGroupComponent} from '../single-group/single-group.component';
 

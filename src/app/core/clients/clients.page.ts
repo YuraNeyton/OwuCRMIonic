@@ -52,7 +52,6 @@ export class ClientsPage implements OnInit {
 
     private sendLoadClients(): Observable<any> {
         const filterToSend = this.getFilterToSend();
-        console.log(filterToSend);
         return this.clientsService.getClients({
             q: filterToSend,
             sort: this.sort ? this.sort : 'createdAt DESC',
@@ -137,5 +136,11 @@ export class ClientsPage implements OnInit {
             this.filter.phone = '';
             this.loadClients();
         }
+    }
+    doRefresh(e) {
+        setTimeout(() => {
+            this.ngOnInit();
+            e.target.complete();
+        }, 550);
     }
 }

@@ -1,12 +1,38 @@
 <ion-header>
-  <ion-toolbar color="dark">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title class="title" >Курси</ion-title>
-  </ion-toolbar>
+<ion-toolbar class="toolbar-color">
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-button (click)="presentModal()">
+      <ion-icon name="search" class="icon-color"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title class="title">Групи</ion-title>
+</ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="filter-bar" *ngIf="filter">
+    <div *ngIf="filter.name" class="filter-label" (click)="filterLabel('name')">
+      Ім'я: {{filter.name}}
+      <ion-icon name="close" class="filter-icon"></ion-icon>
+    </div>
+  </div>
+ <app-courses-table [courses]="courses"></app-courses-table>
 </ion-content>
+<ion-footer class="foo">
+  <div class="footer-panel">
+    <div>
+      <ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large" class="icon"></ion-icon>
+    </div>
+    <div>
+      <ion-title class="title-color">{{pageIndex}} з {{countOfPages}}</ion-title>
+    </div>
+    <div>
+      <ion-icon name="arrow-dropright-circle" (click)="loadPaginated(1, null)" size="large" class="icon"></ion-icon>
+    </div>
+  </div>
+</ion-footer>

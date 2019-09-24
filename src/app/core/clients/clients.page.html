@@ -13,6 +13,9 @@
 </ion-header>
 
 <ion-content class="content-background">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <div class="filter-bar" *ngIf="filter">
         <div *ngIf="filter.name" class="filter-label" (click)="filterLabel('name')">
             Ім'я: {{filter.name}}
