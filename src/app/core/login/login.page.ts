@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
                     if (principal) {
                         this.router.navigate(['/home']);
                         this.authService.menuShowIfLogin.next(true);
-                        this.fcm.subscribeToTopic('e-application');
+                        this.fcm.$subscribe.next('subscribe');
                     }
                 },
                 (err) => {
@@ -44,6 +44,7 @@ export class LoginPage implements OnInit {
                 }
             );
     }
+
     styleChange(element) {
         this.renderer.setStyle(element, 'border', '2px solid #3498db');
     }

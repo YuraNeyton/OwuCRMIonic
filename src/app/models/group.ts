@@ -20,7 +20,9 @@ export class Group {
     public course: Course = null,
     public courseId: number = null,
     public city: City = null,
-    public cityId: number = null
+    public cityId: number = null,
+    public createdAt: string = '',
+    public updatedAt: string = '',
   ) {
   }
 }

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Client} from '../../models/client';
 import {Application} from '../../models/application';
 import {ModalController} from '@ionic/angular';
 
@@ -15,6 +14,7 @@ export class SingleApplicationComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.a);
     }
 
     close() {

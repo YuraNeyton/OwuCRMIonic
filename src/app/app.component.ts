@@ -5,7 +5,6 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AuthService} from './services/auth.service';
 import {NotificationFCMService} from './services/notification-fcm.service';
-import {LocalNotifications} from '@ionic-native/local-notifications/ngx';
 import {LocalNotificationsService} from './services/local-notifications.service';
 
 @Component({
@@ -32,22 +31,18 @@ export class AppComponent {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
+            this.showMenu = !!window.localStorage.getItem('principal');
+            this.authService.menuShowIfLogin.subscribe(value => {
+                this.showMenu = !!value;
+            });
+            this.fcm.$subscribe.subscribe(() => {
+                this.fcm.onNotification();
+            });
+            console.log(document.cookie);
         });
-        this.showMenu = !!window.localStorage.getItem('principal');
-        this.authService.menuShowIfLogin.subscribe(value => {
-            this.showMenu = !!value;
-        });
-        this.notification();
     }
 
     closeMenu() {
         this.menuCtrl.close('first');
-    }
-
-    notification() {
-        this.fcm.onNotification().subscribe(value => {
-            console.log(value);
-            // this.ln.localNotifications(value);
-        });
     }
 }

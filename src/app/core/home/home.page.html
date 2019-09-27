@@ -21,7 +21,7 @@
             <ion-icon name="search"></ion-icon>
         </ion-fab-button>
     </ion-fab>
-    <ion-segment (ionChange)="segmentChanged($event)" value="application">
+    <ion-segment (ionChange)="segmentChanged($event)" value="application" color="medium">
         <ion-segment-button value="application">
             <ion-label>Заявки</ion-label>
         </ion-segment-button>
@@ -54,11 +54,15 @@
             До оплати: {{filter.leftToPay}}
             <ion-icon name="close" class="filter-icon"></ion-icon>
         </div>
+        <div *ngIf="filter.appDateInput" class="filter-label" (click)="filterLabel('appDateInput')">
+            Дата: {{filter.appDateInput |date}}
+            <ion-icon name="close" class="filter-icon"></ion-icon>
+        </div>
     </div>
     <app-application-list [applications]="applications" *ngIf="applicationPage"></app-application-list>
     <app-e-application-list [eapplications]="eapplications" *ngIf="eapplicationPage"></app-e-application-list>
 </ion-content>
-<ion-footer class="foo">
+<ion-footer class="foo" *ngIf="footerShow">
     <div class="footer-panel">
         <div>
             <ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large" class="icon"></ion-icon>

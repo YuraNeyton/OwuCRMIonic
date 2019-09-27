@@ -43,11 +43,11 @@
             </ion-item>
             <ion-item *ngIf="c.createdAt">
                 <ion-label>Створено:</ion-label>
-                {{c.createdAt |date}}
+                {{c.createdAt | date: 'short'}}
             </ion-item>
             <ion-item *ngIf="c.updatedAt">
                 <ion-label>Оновлено:</ion-label>
-                {{c.updatedAt | date}}
+                {{c.updatedAt | date: 'short'}}
             </ion-item>
             <ion-item *ngIf="c.statusId">
                 <ion-label>Статус:</ion-label>

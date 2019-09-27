@@ -14,35 +14,43 @@
     <ion-list>
       <ion-item *ngIf="g.name">
         <ion-label>Ім'я:</ion-label>
-        {{g.name}}
+        <div class="text-modal">{{g.name}}</div>
       </ion-item>
         <ion-item *ngIf="g.freePractice">
           <ion-label>Вільна практика:</ion-label>
-          {{g.freePractice}}
+          <div class="text-modal">{{g.freePractice}}</div>
         </ion-item>
         <ion-item *ngIf="g.usedPractice">
           <ion-label>Використана практика:</ion-label>
-          {{g.usedPractice}}
+          <div class="text-modal">{{g.usedPractice}}</div>
         </ion-item>
       <ion-item *ngIf="g.startDate">
         <ion-label>Початкова дата:</ion-label>
-        {{g.startDate | date}}
+        <div class="text-modal">{{g.startDate | date}}</div>
       </ion-item>
       <ion-item *ngIf="g.startTime">
         <ion-label>Початкова час:</ion-label>
-        {{g.startTime}}
+        <div class="text-modal">{{g.startTime}}</div>
       </ion-item>
       <ion-item *ngIf="g.expirationDate">
         <ion-label>Дата закінчення:</ion-label>
-        {{g.expirationDate}}
+        <div class="text-modal">{{g.expirationDate}}</div>
       </ion-item>
       <ion-item *ngIf="g.course.name">
         <ion-label>Курс:</ion-label>
-        {{g.course.name}}
+        <div class="text-modal">{{g.course.name}}</div>
       </ion-item>
       <ion-item *ngIf="g.city.name">
         <ion-label>Місто:</ion-label>
-        {{g.city.name}}
+        <div class="text-modal"> {{g.city.name}}</div>
+      </ion-item>
+      <ion-item *ngIf="g.createdAt">
+        <ion-label style="overflow: visible;">Дата створення:</ion-label>
+        <div class="text-modal">{{g.createdAt | date: 'short'}}</div>
+      </ion-item>
+      <ion-item *ngIf="g.updatedAt">
+        <ion-label style="overflow: visible;">Дата оновлення:</ion-label>
+        <div class="text-modal">{{g.updatedAt | date: 'short'}}</div>
       </ion-item>
     </ion-list>
   </ion-card>

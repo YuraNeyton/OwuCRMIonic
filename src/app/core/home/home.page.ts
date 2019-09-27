@@ -10,6 +10,8 @@ import {HomeFilterComponent} from './home-filter/home-filter.component';
 import {City} from '../../models/city';
 import {NotificationFCMService} from '../../services/notification-fcm.service';
 import {MaterialTableService} from '../../services/material-table.service';
+import * as moment from 'moment';
+import {locale, Moment} from 'moment';
 
 @Component({
     selector: 'app-home',
@@ -24,6 +26,7 @@ export class HomePage implements OnInit {
     eapplications: Eapplication[];
     applicationPage = true;
     eapplicationPage = false;
+    footerShow = true;
     sort = '';
     count = 0;
     pageIndex = 1;
@@ -113,12 +116,14 @@ export class HomePage implements OnInit {
                 this.applicationPage = !this.applicationPage;
                 this.eapplicationPage = false;
             });
+            this.footerShow = true;
         } else if (e.detail.value === 'e-application') {
             this.eapplicationService.getEapplications().subscribe((value: any) => {
                 this.eapplications = value.models;
                 this.applicationPage = false;
                 this.eapplicationPage = !this.eapplicationPage;
             });
+            this.footerShow = false;
         }
     }
 
@@ -179,8 +184,8 @@ export class HomePage implements OnInit {
                 }
             ];
         }
-        if (this.appDateInput) {
-            res.date = this.appDateInput;
+        if (this.filter.appDateInput) {
+            res.date = moment(this.filter.appDateInput).format('YYYY-MM-DDT00:00:00.000') + 'Z';
         }
 
         return res;
@@ -205,6 +210,9 @@ export class HomePage implements OnInit {
         } else if (field === 'leftToPay') {
             this.filter.leftToPay = '';
             this.loadApplications();
+        } else if (field === 'appDateInput') {
+            this.filter.appDateInput = '';
+            this.loadApplications();
         }
     }
 
@@ -225,6 +233,7 @@ export class HomePage implements OnInit {
             this.sendLoadApplications().subscribe(response => {
                 this.count = response.count;
                 this.applications = response.models;
+                console.log(this.applications);
                 this.countOfPages = this.materialTableService.calcCountOfPages(this.count, this.pageSize);
             });
         }

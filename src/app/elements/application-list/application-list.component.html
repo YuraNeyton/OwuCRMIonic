@@ -8,10 +8,13 @@
     </div>
 
     <ion-row *ngFor="let a of applications; index as i" class="row" (click)="presentModal(a)">
-        <ion-col>{{i + 1}}</ion-col>
-        <ion-col *ngIf="a.client && a.client.name">{{a.client.name}}</ion-col>
-        <ion-col *ngIf="a.city && a.city.name">{{a.city.name}}</ion-col>
-        <ion-col *ngIf="a.group && a.group.name">{{a.group.name}}</ion-col>
+            <ion-col>{{i + 1}}</ion-col>
+            <ion-col *ngIf="a.client" class="text-hidden">{{a.client.name}}</ion-col>
+            <ion-col *ngIf="!a.client">-</ion-col>
+            <ion-col *ngIf="a.city" class="text-hidden">{{a.city.name}}</ion-col>
+            <ion-col *ngIf="!a.city">-</ion-col>
+            <ion-col *ngIf="a.group" class="text-hidden">{{a.group.name}}</ion-col>
+            <ion-col *ngIf="!a.group">-</ion-col>
     </ion-row>
 </ion-card>
 

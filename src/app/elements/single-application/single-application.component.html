@@ -15,29 +15,29 @@
         <ion-list>
             <ion-item *ngIf="a.city">
                 <ion-label>Місто:</ion-label>
-                {{a.city.name}}
+                <div class="text-modal">{{a.city.name}}</div>
             </ion-item>
             <ion-item *ngIf="a.course">
                 <ion-label>Курс:</ion-label>
-                {{a.course.name}}
+                <div class="text-modal">{{a.course.name}}</div>
             </ion-item>
             <ion-item *ngIf="a.group">
                 <ion-label>Група:</ion-label>
-                {{a.group.name}}
+                <div class="text-modal">{{a.group.name}}</div>
             </ion-item>
             <ion-item *ngIf="a.date">
                 <ion-label>Дата:</ion-label>
-                {{a.date | date}}
+                <div class="text-modal">{{a.date | date}}</div>
             </ion-item>
             <ion-item *ngIf="a.fullPrice">
                 <ion-label>Ціна:</ion-label>
-                {{a.fullPrice}}
+                <div class="text-modal">{{a.fullPrice}}</div>
             </ion-item>
             <ion-item *ngIf="a.leftToPay">
                 <ion-label>До оплати:</ion-label>
-                {{a.leftToPay}}
+                <div class="text-modal">{{a.leftToPay}}</div>
             </ion-item>
-            <ion-item>
+            <ion-item *ngIf="a.hasPractice">
                 <ion-label>Має практику:</ion-label>
                 <div *ngIf="a.hasPractice === 0">
                     Ні
@@ -54,6 +54,14 @@
                 <div *ngIf="a.needLaptop === 1">
                     Так
                 </div>
+            </ion-item>
+            <ion-item *ngIf="a.createdAt">
+                <ion-label style="overflow: visible;">Дата створення:</ion-label>
+                <div class="text-modal">{{a.createdAt | date: 'short'}}</div>
+            </ion-item>
+            <ion-item *ngIf="a.updatedAt">
+                <ion-label style="overflow: visible;">Дата оновлення:</ion-label>
+                <div class="text-modal">{{a.updatedAt | date: 'short'}}</div>
             </ion-item>
         </ion-list>
     </ion-card>

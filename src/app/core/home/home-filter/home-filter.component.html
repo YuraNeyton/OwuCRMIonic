@@ -35,6 +35,10 @@
         <ion-label>До оплати:</ion-label>
         <ion-input required type="number" [(ngModel)]="filterParams.leftToPay"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label>Дата:</ion-label>
+        <ion-datetime [(ngModel)]="filterParams.appDateInput" placeholder="Select Date"></ion-datetime>
+      </ion-item>
     </ion-list>
     <ion-button expand="block" color="success" (click)="filter()">Знайти</ion-button>
   </ion-card>

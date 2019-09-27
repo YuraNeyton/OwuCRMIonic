@@ -10,10 +10,9 @@ export class LocalNotificationsService {
     }
 
     localNotifications(data: any) {
-        console.log(data);
         this.ln.schedule({
-            id: 1,
-            text: 'dada',
+            title: data.title,
+            text: data.body,
         });
     }
 }

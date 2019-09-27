@@ -6,23 +6,23 @@
         <ion-list>
             <ion-item *ngIf="e.email">
                 <ion-label>Емейл:</ion-label>
-                {{e.email}}
+                <div class="text-modal">{{e.email}}</div>
             </ion-item>
             <ion-item *ngIf="e.phone">
                 <ion-label>Телефон:</ion-label>
-                {{e.phone}}
+                <div class="text-modal">{{e.phone}}</div>
             </ion-item>
             <ion-item *ngIf="e.city">
                 <ion-label>Місто:</ion-label>
-                {{e.city}}
+                <div class="text-modal">{{e.city}}</div>
             </ion-item>
             <ion-item *ngIf="e.course">
                 <ion-label>Курс:</ion-label>
-                {{e.course}}
+                <div class="text-modal">{{e.course}}</div>
             </ion-item>
             <ion-item *ngIf="e.type">
                 <ion-label>Тип:</ion-label>
-                {{e.type}}
+                <div class="text-modal">{{e.type}}</div>
             </ion-item>
             <ion-item *ngIf="e.wantPractice">
                 <ion-label>З практикою:</ion-label>
@@ -35,15 +35,15 @@
             </ion-item>
             <ion-item *ngIf="e.social">
                 <ion-label>Джерело:</ion-label>
-                {{e.social}}
+                <div class="text-modal">{{e.social}}</div>
             </ion-item>
             <ion-item *ngIf="e.comment">
                 <ion-label>Коментар:</ion-label>
-                {{e.comment}}
+                <div class="text-modal">{{e.comment}}</div>
             </ion-item>
             <ion-item *ngIf="e.date">
                 <ion-label>Дата:</ion-label>
-                {{e.createdAt | date}}
+                <div class="text-modal">{{e.createdAt | date}}</div>
             </ion-item>
         </ion-list>
     </ion-card>

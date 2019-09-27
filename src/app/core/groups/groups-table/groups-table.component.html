@@ -9,8 +9,8 @@
 
   <ion-row *ngFor="let g of groups; index as i" class="row" (click)="presentModal(g)">
     <ion-col>{{i + 1}}</ion-col>
-    <ion-col *ngIf="g.name">{{g.name}}</ion-col>
-    <ion-col *ngIf="g.course.name">{{g.course.name}}</ion-col>
-    <ion-col *ngIf="g.city.name">{{g.city.name}}</ion-col>
+    <ion-col *ngIf="g.name" class="text-hidden">{{g.name}}</ion-col>
+    <ion-col *ngIf="g.course.name" class="text-hidden">{{g.course.name}}</ion-col>
+    <ion-col *ngIf="g.city.name" class="text-hidden">{{g.city.name}}</ion-col>
   </ion-row>
 </ion-card>

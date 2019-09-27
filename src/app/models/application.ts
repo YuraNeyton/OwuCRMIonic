@@ -20,6 +20,8 @@ export class Application {
     public needLaptop: number = 0,
     public gotLaptop: number = 0,
     public certificate: string = '',
+    public createdAt: string = '',
+    public updatedAt: string = '',
     public client: Client = null,
     public clientId: number = null,
     public course: Course = null,

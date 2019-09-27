@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {ApplicationService} from '../../../services/application.service';
+import {Moment} from 'moment';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-home-filter',
@@ -17,7 +19,8 @@ export class HomeFilterComponent implements OnInit {
         'group.name': '',
         surname: '',
         fullPrice: '',
-        leftToPay: ''
+        leftToPay: '',
+        appDateInput: '',
     };
 
     constructor(
