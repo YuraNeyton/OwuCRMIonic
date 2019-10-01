@@ -98,6 +98,7 @@ export class CoursesPage implements OnInit {
     loadFiltered() {
         this.coursesService.$Filtered.subscribe((value: any) => {
             this.filter = value;
+            this.pageIndex = 1;
             this.loadCourses();
         });
     }

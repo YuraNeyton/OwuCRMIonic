@@ -86,6 +86,7 @@ export class HomePage implements OnInit {
         this.applicationService.$Filter.subscribe((value: any) => {
             if (value.c === 'homePage') {
                 this.filter = value.f;
+                this.pageIndex = 1;
                 this.loadApplications();
             }
         });

@@ -12,6 +12,8 @@ export class TaskService {
 
   private tasksURL = '';
   refreshTableSubject = new Subject();
+  $getHeader = new Subject();
+  $Filtered = new Subject();
   constructor(
     private http: HttpClient,
     private config: ConfigService

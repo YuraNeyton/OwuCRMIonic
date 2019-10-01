@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar class="toolbar-color">
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title">Пошук</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>Повідомлення:</ion-label>
+        <ion-input required type="text" [(ngModel)]="filterParams.message"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Клієнт:</ion-label>
+        <ion-input required type="text" [(ngModel)]="filterParams['client.name']"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Дата:</ion-label>
+        <ion-datetime [(ngModel)]="filterParams.date" placeholder="Select Date"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" color="success" (click)="filter()">Знайти</ion-button>
+  </ion-card>
+</ion-content>

@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { TasksPage } from './tasks.page';
+import {TasksFilterComponent} from "./tasks-filter/tasks-filter.component";
+import {TasksTableComponent} from "./tasks-table/tasks-table.component";
 
 const routes: Routes = [
   {
@@ -21,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TasksPage]
+  declarations: [TasksPage, TasksFilterComponent, TasksTableComponent],
+  entryComponents:[TasksFilterComponent],
 })
 export class TasksPageModule {}

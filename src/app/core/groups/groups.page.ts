@@ -127,6 +127,7 @@ export class GroupsPage implements OnInit {
     loadFiltered() {
         this.groupsService.$Filtered.subscribe((value: any) => {
             this.filter = value;
+            this.pageIndex = 1;
             this.loadGroups();
         });
     }

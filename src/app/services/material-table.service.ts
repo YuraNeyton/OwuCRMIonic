@@ -95,5 +95,21 @@ export class MaterialTableService {
     //     });
     //     return deleteSnackBarRef.onAction();
     // }
-
+    getDataFromUrlToSortTaskTable(headerBlock, res) {
+        const sortDataArray = res.params.sortTaskTable.split(' ');
+        const headerElements = headerBlock.nativeElement.getElementsByTagName('td');
+        for (let i = 0; i < headerElements.length; i++) {
+            headerElements[i].dataset.sort = '';
+            headerElements[i].setAttribute('class', '');
+            if (sortDataArray[0] === headerElements[i].id) {
+                if (headerElements[i].id === 'client') {
+                    headerElements[i].dataset.sort = `${sortDataArray[0]}.${[sortDataArray[1], sortDataArray[2]].join(' ')}`;
+                    headerElements[i].setAttribute('class', `sort-${sortDataArray[2].toLocaleLowerCase()}`);
+                } else if (headerElements[i].id === 'date' || headerElements[i].id === 'message') {
+                    headerElements[i].dataset.sort = `${[sortDataArray[0], sortDataArray[1]].join(' ')}`;
+                    headerElements[i].setAttribute('class', `sort-${sortDataArray[1].toLocaleLowerCase()}`);
+                }
+            }
+        }
+    }
 }

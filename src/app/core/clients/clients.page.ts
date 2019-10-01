@@ -121,6 +121,7 @@ export class ClientsPage implements OnInit {
             // this.filter = this.materialTableService.getFilter(value.el);
             // console.log(this.filter);
             this.filter = value;
+            this.pageIndex = 1;
             this.loadClients();
         });
     }

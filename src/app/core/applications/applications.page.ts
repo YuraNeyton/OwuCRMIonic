@@ -76,6 +76,7 @@ export class ApplicationsPage implements OnInit {
         this.applicationService.$Filter.subscribe((value: any) => {
             if (value.c === 'applicationsPage') {
                 this.filter = value.f;
+                this.pageIndex = 1;
                 this.loadApplications();
             }
         });
