@@ -14,7 +14,6 @@ import {LocalNotificationsService} from './services/local-notifications.service'
 })
 export class AppComponent {
     showMenu: boolean;
-
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
@@ -38,7 +37,6 @@ export class AppComponent {
             this.fcm.$subscribe.subscribe(() => {
                 this.fcm.onNotification();
             });
-            console.log(document.cookie);
         });
     }
 

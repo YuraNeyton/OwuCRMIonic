@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar class="toolbar-color">
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title">Пошук</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>Клієнт:</ion-label>
+        <ion-input required type="text" [(ngModel)]="filterParams['client.fullname']"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Курс:</ion-label>
+        <ion-input required type="text" [(ngModel)]="filterParams['course.name']"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Номер:</ion-label>
+        <ion-input required type="number" [(ngModel)]="filterParams.number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Очікувана сума:</ion-label>
+        <ion-input required type="number" [(ngModel)]="filterParams.expectedAmount"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Дата платежа:</ion-label>
+        <ion-datetime [(ngModel)]="filterParams.paymentDate" placeholder="Select Date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Сума:</ion-label>
+        <ion-input required type="number" [(ngModel)]="filterParams.amount"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Статус:</ion-label>
+        <ion-select [(ngModel)]="filterParams.statusId" interface="action-sheet">
+          <ion-select-option *ngFor="let status of s" [value]="status.id">{{status.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" color="success" (click)="filter()">Знайти</ion-button>
+  </ion-card>
+</ion-content>

@@ -1,14 +1,14 @@
 <ion-header>
 <ion-toolbar class="toolbar-color">
   <ion-buttons slot="start">
-    <ion-back-button></ion-back-button>
+    <ion-menu-button class="icon-color"></ion-menu-button>
   </ion-buttons>
   <ion-buttons slot="end">
     <ion-button (click)="presentModal()">
       <ion-icon name="search" class="icon-color"></ion-icon>
     </ion-button>
   </ion-buttons>
-  <ion-title class="title">Групи</ion-title>
+  <ion-title class="title">Курси</ion-title>
 </ion-toolbar>
 </ion-header>
 <ion-content class="content-background">
@@ -21,7 +21,9 @@
       <ion-icon name="close" class="filter-icon"></ion-icon>
     </div>
   </div>
- <app-courses-table [courses]="courses"></app-courses-table>
+  <div (swipe)="changePage($event)">
+    <app-courses-table [courses]="courses" [tableListCount]="tableListCount"></app-courses-table>
+  </div>
 </ion-content>
 <ion-footer class="foo">
   <div class="footer-panel">

@@ -1,12 +1,12 @@
 import {Component, ElementRef, Input, OnInit, ViewChild, ViewChildren} from '@angular/core';
 import {MenuController, ModalController} from '@ionic/angular';
-import {FilterComponent} from "../clients/filter/filter.component";
-import {TasksFilterComponent} from "./tasks-filter/tasks-filter.component";
-import {TaskService} from "../../services/task.service";
-import {Task} from "../../models/task";
-import {MaterialTableService} from "../../services/material-table.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Observable} from "rxjs";
+import {FilterComponent} from '../clients/filter/filter.component';
+import {TasksFilterComponent} from './tasks-filter/tasks-filter.component';
+import {TaskService} from '../../services/task.service';
+import {Task} from '../../models/task';
+import {MaterialTableService} from '../../services/material-table.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from 'rxjs';
 import * as moment from 'moment';
 
 @Component({
@@ -24,6 +24,7 @@ export class TasksPage implements OnInit {
     doneTaskTable = null;
     sort = '';
     filter: any = {};
+    tableListCount = 0;
     paramsToAdd = {
         clientTaskTable: null,
         messageTaskTable: null,
@@ -92,7 +93,7 @@ export class TasksPage implements OnInit {
             this.paramsToAdd.clientTaskTable = value['client.name'];
             this.paramsToAdd.messageTaskTable = value.message;
             this.pageIndex = 1;
-            if(value.date){
+            if (value.date) {
                 this.paramsToAdd.dateTaskTable = moment(this.filter.date).format('YYYY-MM-DDT00:00:00.000') + 'Z';
             }
             this.loadTasks();
@@ -127,14 +128,24 @@ export class TasksPage implements OnInit {
         }
     }
 
-    loadPaginated(offset: number, event: any) {
+    loadPaginated(offset: number, e: any) {
         this.pageIndex = this.materialTableService.calcNextPage({
             countOfPages: this.countOfPages,
             currentPage: this.pageIndex,
             nextOffset: offset,
-            nextPage: event ? event.target.value : 0,
-            event: event
+            nextPage: e ? e.target.value : 0,
+            event: e
         });
+        if (offset === 1) {
+            if (this.countOfPages !== 1) {
+                this.tableListCount += this.pageSize;
+            }
+        } else {
+            if (this.tableListCount !== 0) {
+                this.tableListCount -= this.pageSize;
+            }
+
+        }
         this.loadTasks();
     }
 
@@ -228,6 +239,14 @@ export class TasksPage implements OnInit {
             this.filter.date = '';
             this.paramsToAdd.dateTaskTable = null;
             this.loadTasks();
+        }
+    }
+
+    changePage(event) {
+        if (event.direction === 2) {
+            this.loadPaginated(1, null);
+        } else if (event.direction === 4) {
+            this.loadPaginated(-1, null);
         }
     }
 

@@ -29,38 +29,47 @@
             <ion-label>Ел. Заявки</ion-label>
         </ion-segment-button>
     </ion-segment>
-    <div class="filter-bar" *ngIf="filter">
-        <div *ngIf="filter['client.fullname']" class="filter-label" (click)="filterLabel('client.fullname')">
-            Клієнт: {{filter['client.fullname']}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
+        <div style="display: flex; justify-content: flex-end" *ngIf="applicationPage">
+            <div style="height: 50px; width: 40%">
+                <ion-range min="10" max="100" pin color="dark" [(ngModel)]="pageSize" (ionChange)="loadApplications()" style="padding-top: 14px">
+                    <ion-icon name="list-box" slot="start" color="dark"></ion-icon>
+                </ion-range>
+            </div>
         </div>
-        <div *ngIf="filter['city.name']" class="filter-label" (click)="filterLabel('city.name')">
-            Місто: {{filter['city.name']}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
+    <div (swipe)="changePage($event)">
+        <div class="filter-bar" *ngIf="filter">
+            <div *ngIf="filter['client.fullname']" class="filter-label" (click)="filterLabel('client.fullname')">
+                Клієнт: {{filter['client.fullname']}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
+            <div *ngIf="filter['city.name']" class="filter-label" (click)="filterLabel('city.name')">
+                Місто: {{filter['city.name']}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
+            <div *ngIf="filter['course.name']" class="filter-label" (click)="filterLabel('course.name')">
+                Курс: {{filter['course.name']}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
+            <div *ngIf="filter['group.name']" class="filter-label" (click)="filterLabel('group.name')">
+                Група: {{filter['group.name']}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
+            <div *ngIf="filter.fullPrice" class="filter-label" (click)="filterLabel('fullPrice')">
+                Ціна: {{filter.fullPrice}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
+            <div *ngIf="filter.leftToPay" class="filter-label" (click)="filterLabel('leftToPay')">
+                До оплати: {{filter.leftToPay}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
+            <div *ngIf="filter.appDateInput" class="filter-label" (click)="filterLabel('appDateInput')">
+                Дата: {{filter.appDateInput |date}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
         </div>
-        <div *ngIf="filter['course.name']" class="filter-label" (click)="filterLabel('course.name')">
-            Курс: {{filter['course.name']}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
-        </div>
-        <div *ngIf="filter['group.name']" class="filter-label" (click)="filterLabel('group.name')">
-            Група: {{filter['group.name']}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
-        </div>
-        <div *ngIf="filter.fullPrice" class="filter-label" (click)="filterLabel('fullPrice')">
-            Ціна: {{filter.fullPrice}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
-        </div>
-        <div *ngIf="filter.leftToPay" class="filter-label" (click)="filterLabel('leftToPay')">
-            До оплати: {{filter.leftToPay}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
-        </div>
-        <div *ngIf="filter.appDateInput" class="filter-label" (click)="filterLabel('appDateInput')">
-            Дата: {{filter.appDateInput |date}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
-        </div>
+        <app-application-list [applications]="applications" [tableListCount]="tableListCount" *ngIf="applicationPage"></app-application-list>
+        <app-e-application-list [eapplications]="eapplications" *ngIf="eapplicationPage"></app-e-application-list>
     </div>
-    <app-application-list [applications]="applications" *ngIf="applicationPage"></app-application-list>
-    <app-e-application-list [eapplications]="eapplications" *ngIf="eapplicationPage"></app-e-application-list>
 </ion-content>
 <ion-footer class="foo" *ngIf="footerShow">
     <div class="footer-panel">

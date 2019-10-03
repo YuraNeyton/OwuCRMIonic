@@ -8,7 +8,7 @@
   </div>
 
   <ion-row *ngFor="let g of groups; index as i" class="row" (click)="presentModal(g)">
-    <ion-col>{{i + 1}}</ion-col>
+    <ion-col>{{i + 1 + tableListCount}}</ion-col>
     <ion-col *ngIf="g.name" class="text-hidden">{{g.name}}</ion-col>
     <ion-col *ngIf="g.course.name" class="text-hidden">{{g.course.name}}</ion-col>
     <ion-col *ngIf="g.city.name" class="text-hidden">{{g.city.name}}</ion-col>

@@ -10,6 +10,7 @@ import {CourseService} from '../../../services/course.service';
 export class CoursesTableComponent implements OnInit {
 
     @Input() courses: Course[];
+    @Input() tableListCount;
 
     constructor(
         private coursesService: CourseService

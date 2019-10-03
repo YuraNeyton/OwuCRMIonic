@@ -11,6 +11,7 @@ import {SingleGroupComponent} from '../single-group/single-group.component';
 })
 export class GroupsTableComponent implements OnInit {
     @Input() groups: Group[];
+    @Input() tableListCount;
 
     constructor(
         private groupService: GroupService,

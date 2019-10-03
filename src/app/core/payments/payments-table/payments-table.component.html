@@ -1,0 +1,20 @@
+<ion-card *ngIf="payments" class="bottom-border">
+
+  <div class="card-title" #headerBlock>
+    <div style="padding-left: 5px">#</div>
+    <div style="padding-left: 30px" (click)="getHeader('application.client.name',headerBlock,$event)">Клієнт</div>
+    <div (click)="getHeader('application.course.name',headerBlock,$event)">Курс</div>
+    <div style="padding-right: 45px" (click)="getHeader('amount',headerBlock,$event)">Сума</div>
+  </div>
+
+  <ion-row *ngFor="let p of payments; index as i" class="row" (click)="presentModal(p)">
+    <ion-col>{{i + 1 + tableListCount}}</ion-col>
+    <ion-col *ngIf="p.application" class="text-hidden">{{p.application.client.name}}</ion-col>
+    <ion-col *ngIf="!p.application">-</ion-col>
+    <ion-col *ngIf="p.application.course" class="text-hidden">{{p.application.course.name}}</ion-col>
+    <ion-col *ngIf="!p.application">-</ion-col>
+    <ion-col *ngIf="p.amount" class="text-hidden">{{p.amount}}</ion-col>
+    <ion-col *ngIf="!p.amount">-</ion-col>
+  </ion-row>
+</ion-card>
+

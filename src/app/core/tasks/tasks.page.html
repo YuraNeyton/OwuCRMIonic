@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar class="toolbar-color">
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-menu-button class="icon-color"></ion-menu-button>
         </ion-buttons>
         <ion-buttons slot="end">
             <ion-button (click)="presentModal()">
@@ -15,21 +15,24 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-    <div class="filter-bar" *ngIf="filter">
-        <div *ngIf="filter['client.name']" class="filter-label" (click)="filterLabel('client.name')">
-            Клієнт: {{filter['client.name']}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
+    <div (swipe)="changePage($event)">
+        <div class="filter-bar" *ngIf="filter">
+            <div *ngIf="filter['client.name']" class="filter-label" (click)="filterLabel('client.name')">
+                Клієнт: {{filter['client.name']}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
+            <div *ngIf="filter.message" class="filter-label" (click)="filterLabel('message')">
+                Повідомлення: {{filter.message}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
+            <div *ngIf="filter.date" class="filter-label" (click)="filterLabel('date')">
+                Дата: {{filter.date |date}}
+                <ion-icon name="close" class="filter-icon"></ion-icon>
+            </div>
         </div>
-        <div *ngIf="filter.message" class="filter-label" (click)="filterLabel('message')">
-            Повідомлення: {{filter.message}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
-        </div>
-        <div *ngIf="filter.date" class="filter-label" (click)="filterLabel('date')">
-            Дата: {{filter.date |date}}
-            <ion-icon name="close" class="filter-icon"></ion-icon>
-        </div>
+        <app-tasks-table [tasks]="tasks" [tableListCount]="tableListCount"></app-tasks-table>
     </div>
-    <app-tasks-table [tasks]="tasks"></app-tasks-table>
+
 </ion-content>
 <ion-footer class="foo">
     <div class="footer-panel">

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="toolbar-color">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button class="icon-color"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="presentModal()">
@@ -42,7 +42,9 @@
       <ion-icon name="close" class="filter-icon"></ion-icon>
     </div>
   </div>
-  <app-application-list [applications]="applications"></app-application-list>
+  <div (swipe)="changePage($event)">
+    <app-application-list [applications]="applications" [tableListCount]="tableListCount"></app-application-list>
+  </div>
 </ion-content>
 <ion-footer class="foo">
   <div class="footer-panel">

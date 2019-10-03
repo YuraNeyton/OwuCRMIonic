@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar class="toolbar-color">
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">
+                <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="title" *ngIf="t">{{t.client.name}} {{t.client.surname}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+
+    <ion-card *ngIf="t">
+        <ion-list>
+            <ion-item *ngIf="t.message">
+                <ion-label>Повідомлення:</ion-label>
+                <div class="text-modal">{{t.message}}</div>
+            </ion-item>
+            <ion-item *ngIf="t.date">
+                <ion-label>Дата:</ion-label>
+                <div class="text-modal">{{t.date | date}}</div>
+            </ion-item>
+            <ion-item>
+                <ion-label>Виконано:</ion-label>
+                <div *ngIf="t.done === 0">
+                    Ні
+                </div>
+                <div *ngIf="t.done === 1">
+                    Так
+                </div>
+            </ion-item>
+            <ion-item *ngIf="t.createdAt">
+                <ion-label style="overflow: visible;">Дата створення:</ion-label>
+                <div class="text-modal">{{t.createdAt | date: 'short'}}</div>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

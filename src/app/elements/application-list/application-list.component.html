@@ -8,7 +8,7 @@
     </div>
 
     <ion-row *ngFor="let a of applications; index as i" class="row" (click)="presentModal(a)">
-            <ion-col>{{i + 1}}</ion-col>
+            <ion-col>{{i + 1 + tableListCount}}</ion-col>
             <ion-col *ngIf="a.client" class="text-hidden">{{a.client.name}}</ion-col>
             <ion-col *ngIf="!a.client">-</ion-col>
             <ion-col *ngIf="a.city" class="text-hidden">{{a.city.name}}</ion-col>

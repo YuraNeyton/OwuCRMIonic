@@ -11,6 +11,7 @@ import {ApplicationService} from '../../services/application.service';
 })
 export class ApplicationListComponent implements OnInit {
     @Input() applications: Application[];
+    @Input() tableListCount = 0;
 
     constructor(
         private modalController: ModalController,

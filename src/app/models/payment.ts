@@ -7,6 +7,8 @@ export class Payment {
     public number: string = '',
     public expectedDate: string = '',
     public paymentDate: string = '',
+    public createdAt: string = '',
+    public updatedAt: string = '',
     public amount: number = 0,
     public expectedAmount: number = 0,
     public application: Application = null,

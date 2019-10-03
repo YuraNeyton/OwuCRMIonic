@@ -20,6 +20,7 @@ export class ClientsPage implements OnInit {
     sort = '';
     filter: any = {};
     statusIdForSearch: number;
+    tableListCount = 0;
 
     constructor(
         private menuCtr: MenuController,
@@ -107,6 +108,16 @@ export class ClientsPage implements OnInit {
             nextPage: e ? e.target.value : 0,
             event: e
         });
+        if (offset === 1) {
+            if (this.countOfPages !== 1) {
+                this.tableListCount += this.pageSize;
+            }
+        } else {
+            if (this.tableListCount !== 0) {
+                this.tableListCount -= this.pageSize;
+            }
+
+        }
         this.loadClients();
 
     }
@@ -143,5 +154,12 @@ export class ClientsPage implements OnInit {
             this.ngOnInit();
             e.target.complete();
         }, 550);
+    }
+    changePage(event) {
+        if (event.direction === 2) {
+            this.loadPaginated(1, null);
+        } else if (event.direction === 4) {
+            this.loadPaginated(-1, null);
+        }
     }
 }

@@ -11,7 +11,7 @@ import {SingleClientComponent} from '../single-client/single-client.component';
 })
 export class ClientsTableComponent implements OnInit {
     @Input() clients: Client[];
-
+    @Input() tableListCount;
     constructor(
         private clientService: ClientService,
         public modalController: ModalController

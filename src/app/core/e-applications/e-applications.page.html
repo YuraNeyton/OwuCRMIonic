@@ -1,12 +1,15 @@
 <ion-header>
-  <ion-toolbar color="dark">
+  <ion-toolbar class="toolbar-color">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button class="icon-color"></ion-menu-button>
     </ion-buttons>
     <ion-title class="title" >Ел. Заявки</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="content-background">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <app-e-application-list [eapplications]="eapplications"></app-e-application-list>
 </ion-content>

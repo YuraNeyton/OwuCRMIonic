@@ -11,7 +11,7 @@ import {City} from '../../models/city';
 import {NotificationFCMService} from '../../services/notification-fcm.service';
 import {MaterialTableService} from '../../services/material-table.service';
 import * as moment from 'moment';
-import {locale, Moment} from 'moment';
+import {TableService} from '../../services/table.service';
 
 @Component({
     selector: 'app-home',
@@ -33,6 +33,8 @@ export class HomePage implements OnInit {
     pageSize = 17;
     countOfPages = 1;
     filter: any = {};
+    tableListCount = 0;
+
 
     constructor(
         private authService: AuthService,
@@ -42,7 +44,8 @@ export class HomePage implements OnInit {
         private eapplicationService: EapplicationService,
         private modalController: ModalController,
         private fcm: NotificationFCMService,
-        private materialTableService: MaterialTableService
+        private materialTableService: MaterialTableService,
+        private tableService: TableService
     ) {
     }
 
@@ -226,7 +229,16 @@ export class HomePage implements OnInit {
             event: e
         });
         this.loadApplications();
+        if (offset === 1) {
+            if (this.countOfPages !== 1) {
+                this.tableListCount += this.pageSize;
+            }
+        } else {
+            if (this.tableListCount !== 0) {
+                this.tableListCount -= this.pageSize;
+            }
 
+        }
     }
 
     public loadApplications() {
@@ -234,7 +246,6 @@ export class HomePage implements OnInit {
             this.sendLoadApplications().subscribe(response => {
                 this.count = response.count;
                 this.applications = response.models;
-                console.log(this.applications);
                 this.countOfPages = this.materialTableService.calcCountOfPages(this.count, this.pageSize);
             });
         }
@@ -245,6 +256,14 @@ export class HomePage implements OnInit {
             this.ngOnInit();
             e.target.complete();
         }, 550);
+    }
+
+    changePage(event) {
+        if (event.direction === 2) {
+            this.loadPaginated(1, null);
+        } else if (event.direction === 4) {
+            this.loadPaginated(-1, null);
+        }
     }
 }
 

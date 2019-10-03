@@ -6,7 +6,7 @@
     </div>
 
     <ion-row *ngFor="let c of courses; index as i" class="row">
-        <ion-col>{{i + 1}}</ion-col>
+        <ion-col>{{i + 1 + tableListCount}}</ion-col>
         <ion-col *ngIf="c.name">
             {{c.name}}
         </ion-col>

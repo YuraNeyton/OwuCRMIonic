@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar class="toolbar-color">
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" size="medium" class="icon-color"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title" *ngIf="p">{{p.application.client.name}} {{p.application.client.surname}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-background">
+
+  <ion-card *ngIf="p">
+    <ion-list>
+      <ion-item *ngIf="p.application">
+        <ion-label>Клієнт:</ion-label>
+        <div class="text-modal">{{p.application.client.name}}</div>
+      </ion-item>
+      <ng-container *ngFor="let status of s">
+        <ion-item *ngIf="p.paymentStatusId === status.id" style="--background: #0ec254">
+          <ion-label>Статус:</ion-label>
+          <div class="text-modal">{{status.name}}</div>
+        </ion-item>
+      </ng-container>
+      <ion-item *ngIf="p.application">
+        <ion-label>Курс:</ion-label>
+        <div class="text-modal">{{p.application.course.name}}</div>
+      </ion-item>
+      <ion-item *ngIf="p.amount">
+        <ion-label>Сума:</ion-label>
+        <div class="text-modal">{{p.amount}}</div>
+      </ion-item>
+      <ion-item *ngIf="p.paymentDate">
+        <ion-label>Дата платежа:</ion-label>
+        <div class="text-modal">{{p.paymentDate | date}}</div>
+      </ion-item>
+      <ion-item *ngIf="p.number">
+        <ion-label>Номер:</ion-label>
+        <div class="text-modal">{{p.number}}</div>
+      </ion-item>
+      <ion-item *ngIf="p.expectedDate">
+        <ion-label>Очікувана дата:</ion-label>
+        <div class="text-modal">{{p.expectedDate}}</div>
+      </ion-item>
+      <ion-item *ngIf="p.expectedAmount">
+        <ion-label>Очікувана сума:</ion-label>
+        <div class="text-modal">{{p.expectedAmount}}</div>
+      </ion-item>
+      <ion-item *ngIf="p.createdAt">
+        <ion-label style="overflow: visible;">Дата створення:</ion-label>
+        <div class="text-modal">{{p.createdAt | date: 'short'}}</div>
+      </ion-item>
+      <ion-item *ngIf="p.updatedAt">
+        <ion-label style="overflow: visible;">Дата оновлення:</ion-label>
+        <div class="text-modal">{{p.updatedAt | date: 'short'}}</div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
