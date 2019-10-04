@@ -30,11 +30,12 @@ export class HomePage implements OnInit {
     sort = '';
     count = 0;
     pageIndex = 1;
-    pageSize = 17;
+    pageSize = 20;
     countOfPages = 1;
     filter: any = {};
     tableListCount = 0;
-
+    hideSkeleton = false;
+    pageForSkeleton = 'application';
 
     constructor(
         private authService: AuthService,
@@ -75,10 +76,17 @@ export class HomePage implements OnInit {
 
     logout() {
         this.authService.logout().subscribe(() => {
-            this.router.navigate(['/']);
-            this.authService.menuShowIfLogin.next(false);
-            this.fcm.unsubscribeFromTopic('e-application');
-        });
+                this.router.navigate(['/']);
+                this.authService.menuShowIfLogin.next(false);
+                this.fcm.unsubscribeFromTopic('e-application');
+            },
+            e => {
+                this.router.navigate(['/']);
+                this.authService.menuShowIfLogin.next(false);
+                this.fcm.unsubscribeFromTopic('e-application');
+                localStorage.removeItem('principal');
+                localStorage.removeItem('cities');
+            });
     }
 
     public closeMenu() {
@@ -221,6 +229,7 @@ export class HomePage implements OnInit {
     }
 
     public loadPaginated(offset: number, e: any) {
+        this.hideSkeleton = false;
         this.pageIndex = this.materialTableService.calcNextPage({
             countOfPages: this.countOfPages,
             currentPage: this.pageIndex,
@@ -229,23 +238,29 @@ export class HomePage implements OnInit {
             event: e
         });
         this.loadApplications();
-        if (offset === 1) {
-            if (this.countOfPages !== 1) {
-                this.tableListCount += this.pageSize;
-            }
-        } else {
-            if (this.tableListCount !== 0) {
-                this.tableListCount -= this.pageSize;
-            }
-
+        this.tableListCount = this.pageSize * (this.pageIndex - 1);
+        if (this.pageIndex === 1) {
+            this.tableListCount = 0;
         }
+        // if (offset === 1) {
+        //     if (this.countOfPages !== 1) {
+        //         this.tableListCount += this.pageSize;
+        //     }
+        // } else {
+        //     if (this.tableListCount !== 0) {
+        //         this.tableListCount -= this.pageSize;
+        //     }
+        //
+        // }
     }
 
     public loadApplications() {
+        this.hideSkeleton = false;
         if (this.pageSize) {
             this.sendLoadApplications().subscribe(response => {
                 this.count = response.count;
                 this.applications = response.models;
+                this.hideSkeleton = true;
                 this.countOfPages = this.materialTableService.calcCountOfPages(this.count, this.pageSize);
             });
         }
@@ -259,11 +274,16 @@ export class HomePage implements OnInit {
     }
 
     changePage(event) {
+        console.log(event);
         if (event.direction === 2) {
             this.loadPaginated(1, null);
         } else if (event.direction === 4) {
             this.loadPaginated(-1, null);
         }
+    }
+
+    logScrolling(e) {
+        console.log(e);
     }
 }
 

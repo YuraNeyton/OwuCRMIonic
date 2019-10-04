@@ -53,6 +53,7 @@
 }
 
 .content-background {
+  overflow-y: scroll;
   --background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);
 }
 
@@ -76,4 +77,24 @@
   //white-space: nowrap;
   width: 60%;
   text-align: end;
+}
+.table-input{
+  background: none;
+  border: none;
+  border-bottom: white 1px solid;
+  width: 20px;
+  text-align: center
+}
+.table-icon{
+  padding: 10px 10px 0 10px;
+  color: white;
+}
+.page_index{
+  color: white;
+  padding-top: 14px;
+}
+.page_size{
+  color: white;
+  padding-top: 14px;
+  padding-right: 16px;
 }

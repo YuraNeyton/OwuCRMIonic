@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
 
     ngOnInit() {
         if (localStorage.getItem('principal')) {
-            this.router.navigate(['/home']);
+            this.router.navigate(['tabs', 'home']);
         }
     }
 
@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
             .subscribe(
                 (principal) => {
                     if (principal) {
-                        this.router.navigate(['/home']);
+                        this.router.navigate(['tabs', 'home']);
                         this.authService.menuShowIfLogin.next(true);
                         this.fcm.$subscribe.next('subscribe');
                     }

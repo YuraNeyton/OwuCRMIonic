@@ -19,7 +19,7 @@ export class TasksPage implements OnInit {
     tasks: Task[] = [];
     count = 0;
     pageIndex = 1;
-    pageSize = 17;
+    pageSize = 20;
     countOfPages = 1;
     doneTaskTable = null;
     sort = '';
@@ -36,6 +36,8 @@ export class TasksPage implements OnInit {
         limit: this.pageSize,
         offset: 0
     };
+    hideSkeleton = false;
+    pageForSkeleton = 'tasks';
 
     constructor(
         private menuCtr: MenuController,
@@ -106,7 +108,7 @@ export class TasksPage implements OnInit {
         } else if (e.target.value > this.countOfPages) {
             e.target.value = this.countOfPages;
         }
-        if (e.target.value != this.paramsToAdd.pageTaskTable) {
+        if (e.target.value !== this.paramsToAdd.pageTaskTable) {
             if (e.target.value > 0 && e.target.value <= this.countOfPages) {
                 this.addPageIndexParams(e.target.value);
             }
@@ -129,6 +131,7 @@ export class TasksPage implements OnInit {
     }
 
     loadPaginated(offset: number, e: any) {
+        this.hideSkeleton = false;
         this.pageIndex = this.materialTableService.calcNextPage({
             countOfPages: this.countOfPages,
             currentPage: this.pageIndex,
@@ -136,16 +139,20 @@ export class TasksPage implements OnInit {
             nextPage: e ? e.target.value : 0,
             event: e
         });
-        if (offset === 1) {
-            if (this.countOfPages !== 1) {
-                this.tableListCount += this.pageSize;
-            }
-        } else {
-            if (this.tableListCount !== 0) {
-                this.tableListCount -= this.pageSize;
-            }
-
+        this.tableListCount = this.pageSize * (this.pageIndex - 1);
+        if (this.pageIndex === 1) {
+            this.tableListCount = 0;
         }
+        // if (offset === 1) {
+        //     if (this.countOfPages !== 1) {
+        //         this.tableListCount += this.pageSize;
+        //     }
+        // } else {
+        //     if (this.tableListCount !== 0) {
+        //         this.tableListCount -= this.pageSize;
+        //     }
+        //
+        // }
         this.loadTasks();
     }
 
@@ -188,6 +195,7 @@ export class TasksPage implements OnInit {
         this.sendLoadTasks().subscribe(response => {
             this.count = response.count;
             this.tasks = response.models;
+            this.hideSkeleton = true;
             this.countOfPages = this.materialTableService.calcCountOfPages(this.count, this.pageSize);
         });
     }

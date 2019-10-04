@@ -9,6 +9,7 @@ import {TasksPage} from './tasks.page';
 import {TasksFilterComponent} from './tasks-filter/tasks-filter.component';
 import {TasksTableComponent} from './tasks-table/tasks-table.component';
 import {SingleTaskComponent} from './single-task/single-task.component';
+import {ElementModule} from '../../elements/element.module';
 
 const routes: Routes = [
     {
@@ -22,6 +23,7 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         IonicModule,
+        ElementModule,
         RouterModule.forChild(routes)
     ],
     declarations: [TasksPage, TasksFilterComponent, TasksTableComponent, SingleTaskComponent],

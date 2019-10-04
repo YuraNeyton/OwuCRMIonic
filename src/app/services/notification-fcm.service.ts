@@ -28,7 +28,7 @@ export class NotificationFCMService {
         this.fcm.onNotification().subscribe(msg => {
             this.ln.localNotifications(msg);
             if (msg.wasTapped) {
-                this.router.navigate(['e-applications']);
+                this.router.navigate(['tabs', 'e-applications']);
             }
         });
     }

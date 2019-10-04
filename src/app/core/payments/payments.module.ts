@@ -9,6 +9,7 @@ import {PaymentsPage} from './payments.page';
 import {PaymentsTableComponent} from './payments-table/payments-table.component';
 import {SinglePaymentComponent} from './single-payment/single-payment.component';
 import {PaymentsFilterComponent} from './payments-filter/payments-filter.component';
+import {ElementModule} from '../../elements/element.module';
 
 const routes: Routes = [
     {
@@ -22,6 +23,7 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         IonicModule,
+        ElementModule,
         RouterModule.forChild(routes)
     ],
     declarations: [PaymentsPage, PaymentsTableComponent, SinglePaymentComponent, PaymentsFilterComponent],

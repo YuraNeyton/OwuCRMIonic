@@ -16,6 +16,30 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+    <div style="display: flex; justify-content: space-between">
+        <div style="display: flex;">
+            <ion-icon name="code" size="large" class="table-icon"></ion-icon>
+            <div class="page_index">
+                <input
+                        type="number"
+                        [value]="pageIndex"
+                        (blur)="loadPaginated(0, $event)"
+                        class="table-input">
+                з {{countOfPages}}
+            </div>
+
+        </div>
+        <div>
+            <div class="page_size">
+                Ліміт:
+                <input
+                        type="number"
+                        [(ngModel)]="pageSize"
+                        (input)="loadClients()"
+                        class="table-input">
+            </div>
+        </div>
+    </div>
     <div class="filter-bar" *ngIf="filter">
         <div *ngIf="filter.name" class="filter-label" (click)="filterLabel('name')">
             Ім'я: {{filter.name}}
@@ -31,21 +55,22 @@
         </div>
     </div>
     <div (swipe)="changePage($event)">
-        <app-clients-table [clients]="clients" [tableListCount]="tableListCount"></app-clients-table>
+        <app-skeleton-table *ngIf="!hideSkeleton" [pageSize]="pageSize" [page]="pageForSkeleton"></app-skeleton-table>
+        <app-clients-table [clients]="clients" [tableListCount]="tableListCount" *ngIf="hideSkeleton"></app-clients-table>
     </div>
 </ion-content>
-<ion-footer class="foo">
-    <div class="footer-panel">
-        <div>
-            <ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large"
-                      class="icon"></ion-icon>
-        </div>
-        <div>
-            <ion-title class="title-color">{{pageIndex}} з {{countOfPages}}</ion-title>
-        </div>
-        <div>
-            <ion-icon name="arrow-dropright-circle" (click)="loadPaginated(1, null)" size="large"
-                      class="icon"></ion-icon>
-        </div>
-    </div>
-</ion-footer>
+<!--<ion-footer class="foo">-->
+    <!--<div class="footer-panel">-->
+        <!--<div>-->
+            <!--<ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large"-->
+                      <!--class="icon"></ion-icon>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<ion-title class="title-color">{{pageIndex}} з {{countOfPages}}</ion-title>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<ion-icon name="arrow-dropright-circle" (click)="loadPaginated(1, null)" size="large"-->
+                      <!--class="icon"></ion-icon>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</ion-footer>-->

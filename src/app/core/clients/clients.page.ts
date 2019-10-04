@@ -15,12 +15,14 @@ export class ClientsPage implements OnInit {
     clients: Client[];
     count = 0;
     pageIndex = 1;
-    pageSize = 19;
+    pageSize = 20;
     countOfPages = 1;
     sort = '';
     filter: any = {};
     statusIdForSearch: number;
     tableListCount = 0;
+    hideSkeleton = false;
+    pageForSkeleton = 'clients';
 
     constructor(
         private menuCtr: MenuController,
@@ -95,12 +97,14 @@ export class ClientsPage implements OnInit {
             this.sendLoadClients().subscribe(response => {
                 this.count = response.count;
                 this.clients = response.models;
+                this.hideSkeleton = true;
                 this.countOfPages = this.materialTableService.calcCountOfPages(this.count, this.pageSize);
             });
         }
     }
 
     public loadPaginated(offset: number, e: any) {
+        this.hideSkeleton = false;
         this.pageIndex = this.materialTableService.calcNextPage({
             countOfPages: this.countOfPages,
             currentPage: this.pageIndex,
@@ -108,17 +112,21 @@ export class ClientsPage implements OnInit {
             nextPage: e ? e.target.value : 0,
             event: e
         });
-        if (offset === 1) {
-            if (this.countOfPages !== 1) {
-                this.tableListCount += this.pageSize;
-            }
-        } else {
-            if (this.tableListCount !== 0) {
-                this.tableListCount -= this.pageSize;
-            }
-
-        }
+        // if (offset === 1) {
+        //     if (this.countOfPages !== 1) {
+        //         this.tableListCount += this.pageSize;
+        //     }
+        // } else {
+        //     if (this.tableListCount !== 0) {
+        //         this.tableListCount -= this.pageSize;
+        //     }
+        //
+        // }
         this.loadClients();
+        this.tableListCount = this.pageSize * (this.pageIndex - 1);
+        if (this.pageIndex === 1) {
+            this.tableListCount = 0;
+        }
 
     }
 

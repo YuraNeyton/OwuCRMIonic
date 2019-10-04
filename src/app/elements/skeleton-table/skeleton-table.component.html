@@ -1,0 +1,47 @@
+<ion-card class="bottom-border">
+
+  <div class="card-title" *ngIf="page == 'application'">
+    <div style="padding-left: 5px">#</div>
+    <div style="padding-left: 30px">Клієнт</div>
+    <div >Місто</div>
+    <div style="padding-right: 45px">Група</div>
+  </div>
+
+  <div class="card-title" *ngIf="page == 'tasks'">
+    <div style="padding-left: 5px">#</div>
+    <div style="padding-left: 52px">Повідомлення</div>
+    <div style="padding-right: 22px;" >Дата</div>
+    <div style="padding-right: 50px">Клієнт</div>
+  </div>
+
+  <div class="card-title" *ngIf="page == 'clients'">
+    <div style="padding-left: 5px">#</div>
+    <div style="padding-left: 52px" >Ім'я</div>
+    <div style="padding-left: 35px" >Прізвище</div>
+    <div style="padding-right: 24px" >Телефон</div>
+  </div>
+
+  <div class="card-title" *ngIf="page == 'payments'">
+    <div style="padding-left: 5px">#</div>
+    <div style="padding-left: 30px">Клієнт</div>
+    <div>Курс</div>
+    <div style="padding-right: 45px">Сума</div>
+  </div>
+
+  <div class="card-title" *ngIf="page == 'groups'">
+    <div style="padding-left: 5px">#</div>
+    <div style="padding-left: 17px" >Ім'я</div>
+    <div>Курс</div>
+    <div style="padding-right: 42px" >Місто</div>
+  </div>
+
+  <div class="card-title" *ngIf="page == 'courses'">
+    <div style="padding-left: 5px">#</div>
+    <div style="padding-right: 140px;">Ім'я</div>
+  </div>
+
+  <ion-row style="background: white" *ngFor="let s of skeletons">
+    <ion-col><ion-skeleton-text animated style="width: 100%; height: 15px;"></ion-skeleton-text></ion-col>
+  </ion-row>
+</ion-card>
+

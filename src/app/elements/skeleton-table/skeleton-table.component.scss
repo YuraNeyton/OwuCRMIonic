@@ -1,5 +1,4 @@
 .bottom-border{
-  overflow-y: scroll;
   border: 2px solid #e6ebeb;
 }
 
@@ -17,4 +16,7 @@
   background: white;
   border-bottom: 1px solid grey;
   font-size: 12px
+}
+ion-col.md.hydrated{
+  padding: 0 5px 0 5px;
 }

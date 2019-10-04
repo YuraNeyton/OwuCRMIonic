@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
             id: 0,
             open: false,
             title: 'Головна',
-            url: '/home',
+            url: '/tabs/home',
             icon: 'home',
             children: []
         },
@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
             id: 1,
             open: false,
             title: 'Клієнти',
-            url: '/clients',
+            url: '/tabs/clients',
             icon: 'person',
             // children: [
             //     // {id: 1, title: 'Завдання', url: '/tasks'},
@@ -31,14 +31,14 @@ export class MenuComponent implements OnInit {
             id: 2,
             open: false,
             title: 'Завдання',
-            url: '/tasks',
+            url: '/tabs/tasks',
             icon: 'attach',
         },
         {
             id: 3,
             open: false,
             title: 'Заявки',
-            url: '/applications',
+            url: '/tabs/applications',
             icon: 'clipboard',
             // children: [
             //     {id: 1, title: 'Ел. Заявки', url: '/e-applications'},
@@ -50,7 +50,7 @@ export class MenuComponent implements OnInit {
             id: 3,
             open: false,
             title: 'Ел. Заявки',
-            url: '/e-applications',
+            url: '/tabs/e-applications',
             icon: 'mail',
             // children: [
             //     {id: 1, title: 'Ел. Заявки', url: '/e-applications'},
@@ -62,7 +62,7 @@ export class MenuComponent implements OnInit {
             id: 3,
             open: false,
             title: 'Платежі',
-            url: '/payments',
+            url: '/tabs/payments',
             icon: 'card',
             // children: [
             //     {id: 1, title: 'Ел. Заявки', url: '/e-applications'},
@@ -74,7 +74,7 @@ export class MenuComponent implements OnInit {
             id: 4,
             open: false,
             title: 'Групи',
-            url: '/groups',
+            url: '/tabs/groups',
             icon: 'people',
             children: []
         },
@@ -82,7 +82,7 @@ export class MenuComponent implements OnInit {
             id: 5,
             open: false,
             title: 'Курси',
-            url: '/courses',
+            url: '/tabs/courses',
             icon: 'school',
             children: []
         },

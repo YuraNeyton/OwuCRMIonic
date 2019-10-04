@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'competitors', loadChildren: './core/competitors/competitors.module#CompetitorsPageModule' },
   { path: 'competitor-applications', loadChildren: './core/competitor-applications/competitor-applications.module#CompetitorApplicationsPageModule' },
   { path: 'ratings', loadChildren: './core/ratings/ratings.module#RatingsPageModule' },
+  { path: 'tabs', loadChildren: './core/tabs/tabs.module#TabsPageModule' },
 ];
 
 @NgModule({

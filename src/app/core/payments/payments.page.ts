@@ -25,13 +25,15 @@ export class PaymentsPage implements OnInit {
     count = 0;
     default = null;
     pageIndex = 1;
-    pageSize = 19;
+    pageSize = 20;
     countOfPages = 1;
     paymentDateInput;
     sort = '';
     filter: any = {};
     tableListCount = 0;
     now = new Date();
+    hideSkeleton = false;
+    pageForSkeleton = 'payments';
 
     constructor(
         private menuCtr: MenuController,
@@ -65,6 +67,7 @@ export class PaymentsPage implements OnInit {
             this.sendLoadPayments().subscribe(response => {
                 this.count = response.count;
                 this.payments = response.models;
+                this.hideSkeleton = true;
                 this.countOfPages = this.materialTableService.calcCountOfPages(this.count, this.pageSize);
             });
         }
@@ -85,6 +88,7 @@ export class PaymentsPage implements OnInit {
     }
 
     loadPaginated(offset: number, e: any) {
+        this.hideSkeleton = false;
         this.pageIndex = this.materialTableService.calcNextPage({
             countOfPages: this.countOfPages,
             currentPage: this.pageIndex,
@@ -92,15 +96,19 @@ export class PaymentsPage implements OnInit {
             nextPage: e ? e.target.value : 0,
             event: e,
         });
-        if (offset === 1) {
-            if (this.countOfPages !== 1) {
-                this.tableListCount += this.pageSize;
-            }
-        } else {
-            if (this.tableListCount !== 0) {
-                this.tableListCount -= this.pageSize;
-            }
-
+        // if (offset === 1) {
+        //     if (this.countOfPages !== 1) {
+        //         this.tableListCount += this.pageSize;
+        //     }
+        // } else {
+        //     if (this.tableListCount !== 0) {
+        //         this.tableListCount -= this.pageSize;
+        //     }
+        //
+        // }
+        this.tableListCount = this.pageSize * (this.pageIndex - 1);
+        if (this.pageIndex === 1) {
+            this.tableListCount = 0;
         }
         this.loadPayments();
     }
@@ -189,6 +197,12 @@ export class PaymentsPage implements OnInit {
             this.filter.statusId = '';
             this.loadPayments();
         }
+    }
+    doRefresh(e) {
+        setTimeout(() => {
+            this.ngOnInit();
+            e.target.complete();
+        }, 550);
     }
 
 

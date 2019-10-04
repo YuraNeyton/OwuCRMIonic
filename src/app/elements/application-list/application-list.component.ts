@@ -33,5 +33,4 @@ export class ApplicationListComponent implements OnInit {
         });
         return await modal.present();
     }
-
 }

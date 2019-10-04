@@ -9,6 +9,7 @@ import {GroupsPage} from './groups.page';
 import {GroupsTableComponent} from './groups-table/groups-table.component';
 import {SingleGroupComponent} from './single-group/single-group.component';
 import {FilterGroupsComponent} from './filter-groups/filter-groups.component';
+import {ElementModule} from '../../elements/element.module';
 
 const routes: Routes = [
     {
@@ -22,6 +23,7 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         IonicModule,
+        ElementModule,
         RouterModule.forChild(routes)
     ], entryComponents: [SingleGroupComponent, FilterGroupsComponent],
     declarations: [GroupsPage, GroupsTableComponent, SingleGroupComponent, FilterGroupsComponent]

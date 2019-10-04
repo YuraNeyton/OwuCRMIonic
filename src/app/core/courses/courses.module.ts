@@ -8,6 +8,7 @@ import {IonicModule} from '@ionic/angular';
 import {CoursesPage} from './courses.page';
 import {CoursesTableComponent} from './courses-table/courses-table.component';
 import {CoursesFilterComponent} from './courses-filter/courses-filter.component';
+import {ElementModule} from '../../elements/element.module';
 
 const routes: Routes = [
     {
@@ -21,6 +22,7 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         IonicModule,
+        ElementModule,
         RouterModule.forChild(routes)
     ], entryComponents: [CoursesFilterComponent],
     declarations: [CoursesPage, CoursesTableComponent, CoursesFilterComponent]
