@@ -1,0 +1,18 @@
+<div class="content" *ngIf="user">
+    <div class="upper-block">
+        <!--<img src='assets/logo-owu.png' style="height: 100%;">-->
+        <div class="img-conteiner">
+            <div class="img" *ngIf="userSymbols">
+               <div class="text">{{userSymbols}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="lower-block">
+        <div class="title">
+            Hi,
+        </div>
+        <div class="user">
+            {{user.name}} {{user.surname}}
+        </div>
+    </div>
+</div>

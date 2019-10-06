@@ -172,6 +172,7 @@ export class ApplicationsPage implements OnInit {
     }
 
     public loadPaginated(offset: number, e: any) {
+        this.hideSkeleton = false;
         this.pageIndex = this.materialTableService.calcNextPage({
             countOfPages: this.countOfPages,
             currentPage: this.pageIndex,
@@ -198,7 +199,6 @@ export class ApplicationsPage implements OnInit {
     }
 
     public loadApplications() {
-        this.hideSkeleton = false;
         if (this.pageSize) {
             this.sendLoadApplications().subscribe(response => {
                 this.count = response.count;

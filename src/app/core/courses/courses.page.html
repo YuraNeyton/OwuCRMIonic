@@ -1,7 +1,7 @@
 <ion-header>
 <ion-toolbar class="toolbar-color">
   <ion-buttons slot="start">
-    <ion-menu-button class="icon-color"></ion-menu-button>
+    <ion-back-button></ion-back-button>
   </ion-buttons>
   <ion-buttons slot="end">
     <ion-button (click)="presentModal()">
@@ -45,21 +45,8 @@
       <ion-icon name="close" class="filter-icon"></ion-icon>
     </div>
   </div>
-  <div (swipe)="changePage($event)">
+  <div (swipe)="changePage($event)" [style.touch-action]="'pan-y'">
     <app-skeleton-table *ngIf="!hideSkeleton" [pageSize]="pageSize" [page]="pageForSkeleton"></app-skeleton-table>
     <app-courses-table [courses]="courses" [tableListCount]="tableListCount" *ngIf="hideSkeleton"></app-courses-table>
   </div>
 </ion-content>
-<!--<ion-footer class="foo">-->
-  <!--<div class="footer-panel">-->
-    <!--<div>-->
-      <!--<ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large" class="icon"></ion-icon>-->
-    <!--</div>-->
-    <!--<div>-->
-      <!--<ion-title class="title-color">{{pageIndex}} з {{countOfPages}}</ion-title>-->
-    <!--</div>-->
-    <!--<div>-->
-      <!--<ion-icon name="arrow-dropright-circle" (click)="loadPaginated(1, null)" size="large" class="icon"></ion-icon>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</ion-footer>-->

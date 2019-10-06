@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {MenuController, ModalController} from '@ionic/angular';
@@ -52,9 +52,7 @@ export class HomePage implements OnInit {
 
     ngOnInit() {
         this.closeMenu();
-        if (this.applicationPage) {
-            this.loadApplications();
-        }
+        this.loadApplications();
         this.applicationService.$getHeader.subscribe((value: any) => {
             this.loadSorted(value.name, value.element, value.e);
         });
@@ -79,13 +77,14 @@ export class HomePage implements OnInit {
                 this.router.navigate(['/']);
                 this.authService.menuShowIfLogin.next(false);
                 this.fcm.unsubscribeFromTopic('e-application');
+                this.router.navigate(['/']);
+                localStorage.clear()
             },
             e => {
                 this.router.navigate(['/']);
                 this.authService.menuShowIfLogin.next(false);
                 this.fcm.unsubscribeFromTopic('e-application');
-                localStorage.removeItem('principal');
-                localStorage.removeItem('cities');
+                localStorage.clear();
             });
     }
 
@@ -242,20 +241,9 @@ export class HomePage implements OnInit {
         if (this.pageIndex === 1) {
             this.tableListCount = 0;
         }
-        // if (offset === 1) {
-        //     if (this.countOfPages !== 1) {
-        //         this.tableListCount += this.pageSize;
-        //     }
-        // } else {
-        //     if (this.tableListCount !== 0) {
-        //         this.tableListCount -= this.pageSize;
-        //     }
-        //
-        // }
     }
 
     public loadApplications() {
-        this.hideSkeleton = false;
         if (this.pageSize) {
             this.sendLoadApplications().subscribe(response => {
                 this.count = response.count;
@@ -274,16 +262,11 @@ export class HomePage implements OnInit {
     }
 
     changePage(event) {
-        console.log(event);
         if (event.direction === 2) {
             this.loadPaginated(1, null);
         } else if (event.direction === 4) {
             this.loadPaginated(-1, null);
         }
-    }
-
-    logScrolling(e) {
-        console.log(e);
     }
 }
 

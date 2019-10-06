@@ -25,6 +25,7 @@ const routes: Routes = [
             { path: 'groups', loadChildren: '../../core/groups/groups.module#GroupsPageModule' },
             { path: 'courses', loadChildren: '../../core/courses/courses.module#CoursesPageModule' },
             { path: 'payments', loadChildren: '../../core/payments/payments.module#PaymentsPageModule' },
+            { path: 'left-panel', loadChildren: '../../core/left-panel/left-panel.module#LeftPanelPageModule' },
         ]
     },
 ];

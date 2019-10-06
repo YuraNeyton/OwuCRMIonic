@@ -1,0 +1,48 @@
+.content{
+  width: 100%;
+  height: 185px;
+  background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);
+}
+.upper-block{
+  width: 100%;
+  height: 69px;
+  display: flex;
+  justify-content: center;
+  border: white 2px solid;
+  background: white;
+}
+.lower-block{
+  width: 100%;
+  height: 116px;
+  //border: white 2px solid;
+}
+.img{
+  position: absolute;
+  left:50%;
+  margin-left: -50px;
+  top:20px;
+  height: 100px;
+  width: 100px;
+  background: linear-gradient(135deg, rgba(129, 131, 131, 1) 0%, rgba(42, 44, 44, 1) 100%);
+  border-radius: 50%;
+  border: 2px solid white;
+  text-align: center;
+}
+.text{
+  padding-top: 32px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.title{
+  text-align: center;
+  padding-top: 60px;
+  color: white;
+}
+.user{
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+

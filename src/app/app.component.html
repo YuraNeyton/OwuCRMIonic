@@ -1,19 +1,22 @@
+<!--<ion-app>-->
+  <!--<ion-split-pane contentId="menu-content">-->
+    <!--<ion-menu menuId="first" side="start" contentId="menu-content" *ngIf="showMenu">-->
+      <!--<ion-header>-->
+        <!--<ion-toolbar class="menu-header">-->
+          <!--<ion-buttons slot="end">-->
+            <!--<ion-button (click)="closeMenu()">-->
+              <!--<ion-icon name="close" class="icon-color"></ion-icon>-->
+            <!--</ion-button>-->
+          <!--</ion-buttons>-->
+        <!--</ion-toolbar>-->
+      <!--</ion-header>-->
+      <!--<ion-content class="content-background">-->
+        <!--<app-menu></app-menu>-->
+      <!--</ion-content>-->
+    <!--</ion-menu>-->
+    <!--<ion-router-outlet id="menu-content"></ion-router-outlet>-->
+  <!--</ion-split-pane>-->
+<!--</ion-app>-->
 <ion-app>
-  <ion-split-pane contentId="menu-content">
-    <ion-menu menuId="first" side="start" contentId="menu-content" *ngIf="showMenu">
-      <ion-header>
-        <ion-toolbar class="menu-header">
-          <ion-buttons slot="end">
-            <ion-button (click)="closeMenu()">
-              <ion-icon name="close" class="icon-color"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="content-background">
-        <app-menu></app-menu>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="menu-content"></ion-router-outlet>
-  </ion-split-pane>
+  <ion-router-outlet></ion-router-outlet>
 </ion-app>

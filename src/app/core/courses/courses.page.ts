@@ -24,7 +24,7 @@ export class CoursesPage implements OnInit {
     tableListCount = 0;
 
     hideSkeleton = false;
-    pageForSkeleton = 'groups';
+    pageForSkeleton = 'courses';
 
     constructor(
         private menuCtr: MenuController,
@@ -71,16 +71,6 @@ export class CoursesPage implements OnInit {
             nextPage: e ? e.target.value : 0,
             event: e
         });
-        // if (offset === 1) {
-        //     if (this.countOfPages !== 1) {
-        //         this.tableListCount += this.pageSize;
-        //     }
-        // } else {
-        //     if (this.tableListCount !== 0) {
-        //         this.tableListCount -= this.pageSize;
-        //     }
-        //
-        // }
         this.tableListCount = this.pageSize * (this.pageIndex - 1);
         if (this.pageIndex === 1) {
             this.tableListCount = 0;

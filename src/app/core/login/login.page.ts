@@ -33,11 +33,12 @@ export class LoginPage implements OnInit {
                         this.router.navigate(['tabs', 'home']);
                         this.authService.menuShowIfLogin.next(true);
                         this.fcm.$subscribe.next('subscribe');
+                        this.user();
                     }
                 },
                 (err) => {
                     if (err) {
-                        const inputs = document.getElementsByTagName('input');
+                        const inputs = document.getElementsByClassName('form-input');
                         this.renderer.setStyle(inputs.item(0), 'border', '2px solid #bf2c2c');
                         this.renderer.setStyle(inputs.item(1), 'border', '2px solid #bf2c2c');
                     }
@@ -48,4 +49,12 @@ export class LoginPage implements OnInit {
     styleChange(element) {
         this.renderer.setStyle(element, 'border', '2px solid #3498db');
     }
+
+    private user() {
+        this.authService.updateProfile.next('update');
+        this.authService.getPrincipal().subscribe(user => {
+            localStorage.setItem('user', JSON.stringify({name: user.name, surname: user.surname}));
+        })
+    }
+
 }

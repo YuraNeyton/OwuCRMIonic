@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content class="content-background">
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" [style.touch-action]="'pan-y'">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <div style="display: flex; justify-content: space-between">
@@ -77,18 +77,4 @@
         <app-payments-table [payments]="payments" [tableListCount]="tableListCount" *ngIf="hideSkeleton"></app-payments-table>
     </div>
 </ion-content>
-<!--<ion-footer class="foo">-->
-    <!--<div class="footer-panel">-->
-        <!--<div>-->
-            <!--<ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large"-->
-                      <!--class="icon"></ion-icon>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<ion-title class="title-color">{{pageIndex}} з {{countOfPages}}</ion-title>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<ion-icon name="arrow-dropright-circle" (click)="loadPaginated(1, null)" size="large"-->
-                      <!--class="icon"></ion-icon>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</ion-footer>-->
+

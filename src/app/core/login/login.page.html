@@ -2,9 +2,11 @@
     <form class="box" ngForm>
         <ion-img class="logo" src="assets/images/owu-logo.png"></ion-img>
         <input #loginInput [(ngModel)]="credentials.login" type="text" name="login" placeholder="Username"
-               (change)="styleChange(loginInput)">
+               (change)="styleChange(loginInput)"
+        class="form-input">
         <input #passInput [(ngModel)]="credentials.password" type="password" name="password" placeholder="Password"
-               (change)="styleChange(passInput)">
+               (change)="styleChange(passInput)"
+               class="form-input">
         <input type="submit" name="" value="Login" (click)="login()">
     </form>
 </ion-content>

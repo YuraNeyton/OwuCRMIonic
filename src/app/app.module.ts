@@ -17,6 +17,7 @@ import {
 } from '@ionic-native/google-maps';
 import {LocalNotifications} from '@ionic-native/local-notifications/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -34,7 +35,9 @@ import { FCM } from '@ionic-native/fcm/ngx';
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptorService,
             multi: true
-        }
+        },
+        NativePageTransitions,
+
     ],
     bootstrap: [AppComponent]
 })

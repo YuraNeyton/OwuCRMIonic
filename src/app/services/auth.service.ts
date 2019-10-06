@@ -15,6 +15,7 @@ export class AuthService {
     public roles = Roles;
     public logoutLoginSubject = new Subject();
     public menuShowIfLogin = new Subject();
+    public updateProfile = new Subject();
     private authURL = '';
 
     constructor(

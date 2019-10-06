@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar class="toolbar-color">
+    <!--<ion-buttons slot="start">-->
+      <!--&lt;!&ndash;<ion-menu-button class="icon-color"></ion-menu-button>&ndash;&gt;-->
+      <!--<ion-button (click)="presentModal()">-->
+        <!--<ion-icon name="search" class="icon-color" size="medium"></ion-icon>-->
+      <!--</ion-button>-->
+    <!--</ion-buttons>-->
+    <ion-img class="logo" src="assets/images/owu-logo.png"></ion-img>
+    <!--<ion-buttons slot="end">-->
+      <!--<ion-button (click)="logout()">-->
+        <!--<ion-icon name="log-out" size="medium" class="icon-color"></ion-icon>-->
+      <!--</ion-button>-->
+    <!--</ion-buttons>-->
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-background">
+  <app-user-profile></app-user-profile>
+  <ion-list class="padding-zero">
+    <ng-container *ngFor="let p of pages">
+      <ion-item class="content-background">
+        <ion-icon [name]="p.icon" class="icon-color" slot="start" [routerLink]="p.url"></ion-icon>
+        <ion-label class="text" [routerLink]="p.url">{{p.title}}</ion-label>
+        <ion-icon name="arrow-forward" class="icon-color" slot="end" [routerLink]="p.url"></ion-icon>
+      </ion-item>
+
+    </ng-container>
+  </ion-list>
+</ion-content>

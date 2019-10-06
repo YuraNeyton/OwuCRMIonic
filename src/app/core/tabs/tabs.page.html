@@ -1,23 +1,29 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom" style="--background:#383a3a">
-    <ion-tab-button tab="home" class="color-for">
-      <ion-icon name="home"></ion-icon>
-      <ion-label>Головна</ion-label>
-    </ion-tab-button>
+<ion-tabs (ionTabsWillChange)="transition($event)">
+    <ion-tab-bar slot="bottom" style="--background:#383a3a">
+        <ion-tab-button tab="home" class="color-for">
+            <ion-icon name="home"></ion-icon>
+            <ion-label>Головна</ion-label>
+        </ion-tab-button>
 
-    <ion-tab-button tab="tasks">
-      <ion-icon name="attach"></ion-icon>
-      <ion-label>Завдання</ion-label>
-    </ion-tab-button>
+        <ion-tab-button tab="tasks">
+            <ion-icon name="attach"></ion-icon>
+            <ion-label>Завдання</ion-label>
+        </ion-tab-button>
 
-    <ion-tab-button tab="e-applications">
-      <ion-icon name="mail"></ion-icon>
-      <ion-label>Ел. Заявки</ion-label>
-    </ion-tab-button>
+        <ion-tab-button tab="e-applications">
+            <ion-icon name="mail"></ion-icon>
+            <ion-label>Ел. Заявки</ion-label>
+            <ion-badge *ngIf="countOfMessage">{{countOfMessage}}</ion-badge>
+        </ion-tab-button>
 
-    <ion-tab-button tab="clients">
-      <ion-icon name="person"  ></ion-icon>
-      <ion-label>Клієнти</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
+        <!--<ion-tab-button tab="clients">-->
+            <!--<ion-icon name="person"></ion-icon>-->
+            <!--<ion-label>Клієнти</ion-label>-->
+        <!--</ion-tab-button>-->
+        <ion-tab-button tab="left-panel">
+            <ion-icon name="apps"></ion-icon>
+            <ion-label>Інше</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
 </ion-tabs>
+

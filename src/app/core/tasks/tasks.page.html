@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div (swipe)="changePage($event)">
+    <div (swipe)="changePage($event)" [style.touch-action]="'pan-y'">
         <div class="filter-bar" *ngIf="filter">
             <div *ngIf="filter['client.name']" class="filter-label" (click)="filterLabel('client.name')">
                 Клієнт: {{filter['client.name']}}
@@ -57,20 +57,4 @@
         <app-skeleton-table *ngIf="!hideSkeleton" [pageSize]="pageSize" [page]="pageForSkeleton"></app-skeleton-table>
         <app-tasks-table [tasks]="tasks" [tableListCount]="tableListCount" *ngIf="hideSkeleton"></app-tasks-table>
     </div>
-
 </ion-content>
-<!--<ion-footer class="foo">-->
-    <!--<div class="footer-panel">-->
-        <!--<div>-->
-            <!--<ion-icon name="arrow-dropleft-circle" (click)="loadPaginated(-1, null)" size="large"-->
-                      <!--class="icon"></ion-icon>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<ion-title class="title-color">{{pageIndex}} з {{countOfPages}}</ion-title>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<ion-icon name="arrow-dropright-circle" (click)="loadPaginated(1, null)" size="large"-->
-                      <!--class="icon"></ion-icon>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</ion-footer>-->
