@@ -37,7 +37,9 @@ export class GroupsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.closeMenu();
+        if (localStorage.getItem('groups')) {
+            this.pageSize = JSON.parse(localStorage.getItem('groups'));
+        }
         this.groupsService.$getHeader.subscribe((value: any) => {
             this.loadSorted(value.name, value.element, value.e);
         });
@@ -50,6 +52,7 @@ export class GroupsPage implements OnInit {
     }
 
     loadGroups() {
+        localStorage.setItem('groups', JSON.stringify(this.pageSize));
         if (this.pageSize) {
             this.sendLoadGroups().subscribe(response => {
                 this.count = response.count;

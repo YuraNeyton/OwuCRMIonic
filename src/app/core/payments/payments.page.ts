@@ -47,7 +47,9 @@ export class PaymentsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.closeMenu();
+        if (localStorage.getItem('payments')) {
+            this.pageSize = JSON.parse(localStorage.getItem('payments'));
+        }
         this.loadPayments();
         this.paymentStatusService.getStatuses({}).subscribe(value => {
             this.paymentStatuses = value.models;
@@ -63,6 +65,7 @@ export class PaymentsPage implements OnInit {
     }
 
     loadPayments() {
+        localStorage.setItem('payments', JSON.stringify(this.pageSize));
         if (this.pageSize) {
             this.sendLoadPayments().subscribe(response => {
                 this.count = response.count;

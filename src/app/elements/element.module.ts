@@ -9,17 +9,18 @@ import {SingleApplicationComponent} from './single-application/single-applicatio
 import {HomeFilterComponent} from '../core/home/home-filter/home-filter.component';
 import {FormsModule} from '@angular/forms';
 import {SkeletonTableComponent} from './skeleton-table/skeleton-table.component';
+import {SkeletonEApplicationComponent} from './skeleton-e-application/skeleton-e-application.component';
 
 
 @NgModule({
-    declarations: [MenuComponent, ApplicationListComponent, EApplicationListComponent, SingleApplicationComponent, HomeFilterComponent, SkeletonTableComponent],
+    declarations: [MenuComponent, ApplicationListComponent, EApplicationListComponent, SingleApplicationComponent, HomeFilterComponent, SkeletonTableComponent, SkeletonEApplicationComponent],
     imports: [
         CommonModule,
         IonicModule,
         FormsModule,
         RouterModule
     ], entryComponents: [SingleApplicationComponent, HomeFilterComponent],
-    exports: [MenuComponent, ApplicationListComponent, EApplicationListComponent, SingleApplicationComponent, HomeFilterComponent, SkeletonTableComponent]
+    exports: [MenuComponent, ApplicationListComponent, EApplicationListComponent, SingleApplicationComponent, HomeFilterComponent, SkeletonTableComponent, SkeletonEApplicationComponent]
 })
 export class ElementModule {
 }

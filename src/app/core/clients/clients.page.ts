@@ -33,7 +33,9 @@ export class ClientsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.closeMenu();
+        if (localStorage.getItem('clients')) {
+            this.pageSize = JSON.parse(localStorage.getItem('clients'));
+        }
         this.loadClients();
         this.clientsService.$getHeader.subscribe((value: any) => {
             this.loadSorted(value.name, value.element, value.e);
@@ -93,6 +95,7 @@ export class ClientsPage implements OnInit {
     }
 
     public loadClients() {
+        localStorage.setItem('clients', JSON.stringify(this.pageSize));
         if (this.pageSize) {
             this.sendLoadClients().subscribe(response => {
                 this.count = response.count;

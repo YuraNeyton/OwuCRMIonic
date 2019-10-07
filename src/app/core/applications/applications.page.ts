@@ -39,7 +39,9 @@ export class ApplicationsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.closeMenu();
+        if (localStorage.getItem('applications')) {
+            this.pageSize = JSON.parse(localStorage.getItem('applications'));
+        }
         this.loadApplications();
         this.applicationService.$getHeader.subscribe((value: any) => {
             this.loadSorted(value.name, value.element, value.e);
@@ -199,6 +201,7 @@ export class ApplicationsPage implements OnInit {
     }
 
     public loadApplications() {
+        localStorage.setItem('applications', JSON.stringify(this.pageSize));
         if (this.pageSize) {
             this.sendLoadApplications().subscribe(response => {
                 this.count = response.count;

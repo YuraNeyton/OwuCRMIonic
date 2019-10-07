@@ -35,7 +35,9 @@ export class CoursesPage implements OnInit {
     }
 
     ngOnInit() {
-        this.closeMenu();
+        if (localStorage.getItem('courses')) {
+            this.pageSize = JSON.parse(localStorage.getItem('courses'));
+        }
         this.coursesService.$getHeader.subscribe((value: any) => {
             this.loadSorted(value.name, value.element, value.e);
         });
@@ -48,6 +50,7 @@ export class CoursesPage implements OnInit {
     }
 
     loadCourses() {
+        localStorage.setItem('courses', JSON.stringify(this.pageSize));
         this.sendLoadCourses().subscribe(response => {
             this.count = response.count;
             this.courses = response.models;

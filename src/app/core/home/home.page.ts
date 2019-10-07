@@ -51,7 +51,9 @@ export class HomePage implements OnInit {
     }
 
     ngOnInit() {
-        this.closeMenu();
+        if (localStorage.getItem('home')) {
+            this.pageSize = JSON.parse(localStorage.getItem('home'));
+        }
         this.loadApplications();
         this.applicationService.$getHeader.subscribe((value: any) => {
             this.loadSorted(value.name, value.element, value.e);
@@ -78,7 +80,7 @@ export class HomePage implements OnInit {
                 this.authService.menuShowIfLogin.next(false);
                 this.fcm.unsubscribeFromTopic('e-application');
                 this.router.navigate(['/']);
-                localStorage.clear()
+                localStorage.clear();
             },
             e => {
                 this.router.navigate(['/']);
@@ -244,6 +246,7 @@ export class HomePage implements OnInit {
     }
 
     public loadApplications() {
+        localStorage.setItem('home', JSON.stringify(this.pageSize));
         if (this.pageSize) {
             this.sendLoadApplications().subscribe(response => {
                 this.count = response.count;

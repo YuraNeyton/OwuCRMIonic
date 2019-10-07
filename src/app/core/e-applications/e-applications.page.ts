@@ -10,6 +10,7 @@ import {Eapplication} from '../../models/eapplication';
 })
 export class EApplicationsPage implements OnInit {
     eapplications: Eapplication[];
+    hideSkeleton = false;
     constructor(
         private menuCtr: MenuController,
         private eapplicationService: EapplicationService,
@@ -17,17 +18,14 @@ export class EApplicationsPage implements OnInit {
     }
 
     ngOnInit() {
-        this.closeMenu();
         this.loadEapplications();
     }
 
-    public closeMenu() {
-        this.menuCtr.close('first');
-    }
-
     public loadEapplications() {
+        this.hideSkeleton = false;
         this.eapplicationService.getEapplications().subscribe((value: any) => {
             this.eapplications = value.models;
+            this.hideSkeleton = true;
         });
     }
 

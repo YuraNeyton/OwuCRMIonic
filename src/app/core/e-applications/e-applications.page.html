@@ -11,5 +11,6 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <app-e-application-list [eapplications]="eapplications"></app-e-application-list>
+  <app-skeleton-e-application [eapplications]="eapplications" *ngIf="!hideSkeleton"></app-skeleton-e-application>
+  <app-e-application-list [eapplications]="eapplications" *ngIf="hideSkeleton"></app-e-application-list>
 </ion-content>

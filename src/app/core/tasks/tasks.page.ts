@@ -50,7 +50,9 @@ export class TasksPage implements OnInit {
     }
 
     ngOnInit() {
-        this.closeMenu();
+        if (localStorage.getItem('tasks')) {
+            this.pageSize = JSON.parse(localStorage.getItem('tasks'));
+        }
         this.loadTasks();
         this.tasksService.refreshTableSubject.subscribe(() => {
             this.loadTasks();
@@ -192,6 +194,7 @@ export class TasksPage implements OnInit {
     }
 
     loadTasks() {
+        localStorage.setItem('tasks', JSON.stringify(this.pageSize));
         this.sendLoadTasks().subscribe(response => {
             this.count = response.count;
             this.tasks = response.models;
