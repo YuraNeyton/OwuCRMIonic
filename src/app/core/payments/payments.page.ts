@@ -4,7 +4,6 @@ import {Payment} from '../../models/payment';
 import {MaterialTableService} from '../../services/material-table.service';
 import {PaymentService} from '../../services/payment.service';
 import {Observable} from 'rxjs';
-import {HomeFilterComponent} from '../home/home-filter/home-filter.component';
 import {PaymentsFilterComponent} from './payments-filter/payments-filter.component';
 import {PaymentStatus} from '../../models/paymentStatus';
 import {ConfigService} from '../../services/config.service';
@@ -27,7 +26,6 @@ export class PaymentsPage implements OnInit {
     pageIndex = 1;
     pageSize = 20;
     countOfPages = 1;
-    paymentDateInput;
     sort = '';
     filter: any = {};
     tableListCount = 0;
@@ -99,16 +97,6 @@ export class PaymentsPage implements OnInit {
             nextPage: e ? e.target.value : 0,
             event: e,
         });
-        // if (offset === 1) {
-        //     if (this.countOfPages !== 1) {
-        //         this.tableListCount += this.pageSize;
-        //     }
-        // } else {
-        //     if (this.tableListCount !== 0) {
-        //         this.tableListCount -= this.pageSize;
-        //     }
-        //
-        // }
         this.tableListCount = this.pageSize * (this.pageIndex - 1);
         if (this.pageIndex === 1) {
             this.tableListCount = 0;

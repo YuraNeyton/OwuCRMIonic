@@ -54,7 +54,7 @@ export class LoginPage implements OnInit {
         this.authService.updateProfile.next('update');
         this.authService.getPrincipal().subscribe(user => {
             localStorage.setItem('user', JSON.stringify({name: user.name, surname: user.surname}));
-        })
+        });
     }
 
 }

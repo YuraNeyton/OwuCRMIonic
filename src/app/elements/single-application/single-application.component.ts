@@ -14,7 +14,6 @@ export class SingleApplicationComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.a);
     }
 
     close() {

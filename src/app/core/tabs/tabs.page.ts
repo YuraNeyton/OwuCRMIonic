@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NativePageTransitions, NativeTransitionOptions} from '@ionic-native/native-page-transitions/ngx';
 import {NavController} from '@ionic/angular';
 import {EapplicationService} from '../../services/eapplication.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
     selector: 'app-tabs',
@@ -15,7 +16,8 @@ export class TabsPage implements OnInit {
 
     constructor(public navCtrl: NavController,
                 private nativePageTransitions: NativePageTransitions,
-                private ep: EapplicationService
+                private ep: EapplicationService,
+                private auth: AuthService
     ) {
     }
 
@@ -82,5 +84,9 @@ export class TabsPage implements OnInit {
                 }
             }
         });
+    }
+
+    private updateUser() {
+        this.auth.updateProfile.next('update');
     }
 }

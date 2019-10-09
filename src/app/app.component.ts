@@ -5,7 +5,6 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {AuthService} from './services/auth.service';
 import {NotificationFCMService} from './services/notification-fcm.service';
-import {LocalNotificationsService} from './services/local-notifications.service';
 
 @Component({
     selector: 'app-root',
@@ -22,7 +21,6 @@ export class AppComponent {
         private menuCtrl: MenuController,
         private authService: AuthService,
         private fcm: NotificationFCMService,
-        private ln: LocalNotificationsService
     ) {
         this.initializeApp();
     }

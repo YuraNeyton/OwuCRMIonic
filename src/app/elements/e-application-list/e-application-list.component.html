@@ -1,9 +1,13 @@
 <ng-container *ngFor="let e of eapplications">
     <ion-card *ngIf="eapplications && e.active == 1" class="bottom-border">
 
-        <div class="card-title" *ngIf="e.name">{{e.name}}</div>
+        <div class="card-title"></div>
 
         <ion-list>
+            <ion-item *ngIf="e.name && e.surname">
+                <ion-label>Клієнт:</ion-label>
+                <div class="text-modal">{{e.name}} {{e.surname}}</div>
+            </ion-item>
             <ion-item *ngIf="e.email">
                 <ion-label>Емейл:</ion-label>
                 <div class="text-modal">{{e.email}}</div>

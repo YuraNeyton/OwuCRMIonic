@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Application} from '../../../models/application';
 import {ModalController} from '@ionic/angular';
 import {Payment} from '../../../models/payment';
 import {PaymentStatus} from '../../../models/paymentStatus';
@@ -17,7 +16,6 @@ export class SinglePaymentComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.p);
     }
 
     close() {

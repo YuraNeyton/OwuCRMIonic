@@ -16,11 +16,7 @@
             <ion-badge *ngIf="countOfMessage">{{countOfMessage}}</ion-badge>
         </ion-tab-button>
 
-        <!--<ion-tab-button tab="clients">-->
-            <!--<ion-icon name="person"></ion-icon>-->
-            <!--<ion-label>Клієнти</ion-label>-->
-        <!--</ion-tab-button>-->
-        <ion-tab-button tab="left-panel">
+        <ion-tab-button tab="left-panel" (click)="updateUser()">
             <ion-icon name="apps"></ion-icon>
             <ion-label>Інше</ion-label>
         </ion-tab-button>

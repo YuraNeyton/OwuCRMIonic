@@ -1,6 +1,5 @@
-import {Component, ElementRef, Input, OnInit, ViewChild, ViewChildren} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MenuController, ModalController} from '@ionic/angular';
-import {FilterComponent} from '../clients/filter/filter.component';
 import {TasksFilterComponent} from './tasks-filter/tasks-filter.component';
 import {TaskService} from '../../services/task.service';
 import {Task} from '../../models/task';

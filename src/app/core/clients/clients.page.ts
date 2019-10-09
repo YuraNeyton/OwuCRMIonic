@@ -115,16 +115,6 @@ export class ClientsPage implements OnInit {
             nextPage: e ? e.target.value : 0,
             event: e
         });
-        // if (offset === 1) {
-        //     if (this.countOfPages !== 1) {
-        //         this.tableListCount += this.pageSize;
-        //     }
-        // } else {
-        //     if (this.tableListCount !== 0) {
-        //         this.tableListCount -= this.pageSize;
-        //     }
-        //
-        // }
         this.loadClients();
         this.tableListCount = this.pageSize * (this.pageIndex - 1);
         if (this.pageIndex === 1) {
@@ -140,8 +130,6 @@ export class ClientsPage implements OnInit {
 
     loadFiltered() {
         this.clientsService.$Filtered.subscribe((value: any) => {
-            // this.filter = this.materialTableService.getFilter(value.el);
-            // console.log(this.filter);
             this.filter = value;
             this.pageIndex = 1;
             this.loadClients();

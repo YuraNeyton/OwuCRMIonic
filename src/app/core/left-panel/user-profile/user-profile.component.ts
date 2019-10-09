@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../../services/auth.service";
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
     selector: 'app-user-profile',
@@ -17,9 +17,12 @@ export class UserProfileComponent implements OnInit {
 
     ngOnInit() {
         this.loadUser();
-        this.auth.updateProfile.subscribe(()=>{
-            this.loadUser();
-        })
+        this.auth.updateProfile.subscribe(() => {
+            setTimeout(() => {
+                this.userSymbols = '';
+                this.loadUser();
+            }, 500);
+        });
     }
 
     loadUser() {

@@ -14,7 +14,6 @@ export class SingleTaskComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.t);
     }
 
     close() {

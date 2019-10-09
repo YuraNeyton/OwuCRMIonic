@@ -46,7 +46,6 @@ export class HomePage implements OnInit {
         private modalController: ModalController,
         private fcm: NotificationFCMService,
         private materialTableService: MaterialTableService,
-        private tableService: TableService
     ) {
     }
 

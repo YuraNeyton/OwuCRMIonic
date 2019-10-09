@@ -1,16 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {Client} from '../../../models/client';
-import {
-    GoogleMaps,
-    GoogleMap,
-    GoogleMapsEvent,
-    GoogleMapOptions,
-    CameraPosition,
-    MarkerOptions,
-    Marker,
-    Environment
-} from '@ionic-native/google-maps';
+import {GoogleMap, GoogleMapOptions, GoogleMaps, GoogleMapsEvent, Marker} from '@ionic-native/google-maps';
 import {ClientStatus} from '../../../models/client-status';
 import {ClientStatusService} from '../../../services/client-status.service';
 
@@ -43,12 +34,6 @@ export class SingleClientComponent implements OnInit {
     }
 
     loadMap() {
-
-        // This code is necessary for browser
-        // Environment.setEnv({
-        //     'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyD1hTohAdI89Lt9OgxvOy-l8IJ4utdD5xw',
-        //     'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyD1hTohAdI89Lt9OgxvOy-l8IJ4utdD5xw'
-        // });
         if (this.c.address) {
             const mapOptions: GoogleMapOptions = {
                 camera: {

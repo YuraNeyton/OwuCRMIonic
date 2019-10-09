@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Payment} from '../../../models/payment';
-import {Application} from '../../../models/application';
-import {SingleApplicationComponent} from '../../../elements/single-application/single-application.component';
 import {ModalController} from '@ionic/angular';
 import {PaymentService} from '../../../services/payment.service';
 import {SinglePaymentComponent} from '../single-payment/single-payment.component';

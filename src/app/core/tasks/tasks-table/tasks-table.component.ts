@@ -2,8 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Task} from '../../../models/task';
 import {TaskService} from '../../../services/task.service';
 import {ModalController} from '@ionic/angular';
-import {Application} from '../../../models/application';
-import {SingleApplicationComponent} from '../../../elements/single-application/single-application.component';
 import {SingleTaskComponent} from '../single-task/single-task.component';
 
 @Component({
